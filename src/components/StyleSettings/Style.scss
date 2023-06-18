@@ -1,0 +1,50 @@
+.style{
+  margin-bottom:500px;
+}
+
+#txtt{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    // margin-left:1420px ;
+    input{
+      border: 2px solid gray ;
+      width: 300px;
+    }
+
+    
+    
+  }
+
+  #containerHeaderH11{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+#buttonId{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    margin: 0 auto;
+}
+
+#inputId{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+#inputButtonId{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; 
+    width: 100px;
+    height: 40px;  
+}

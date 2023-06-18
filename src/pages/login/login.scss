@@ -1,0 +1,560 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+
+#leftbtn{
+  margin-top: 150px;
+  label{
+    background-color: #0B1219;
+    color: black;
+  }
+}
+
+
+
+
+
+
+input[type=text]{
+  color:rgb(1, 1, 53);
+  padding: 8px;
+  border-radius: 40px;
+}
+
+$white: #FFFFFF;
+$lightGreen: #06554D;
+$lightBlack: #0B1219;
+$object-fit: object-fit;
+$SegoeUI: "Segoe UI";
+$normal: "normal";
+// .txt{
+//   input{
+//     border: 2px solid gray ;
+//     width: 300px;
+//   }
+// }
+.setings-div {
+  display: flex;
+  width: 40%;
+  margin: 40px auto;
+  align-items: center;
+  justify-content: space-between;
+  .setings {
+    div {
+      margin: 0 auto;
+      width: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      span {
+        width: 200px;
+      }
+
+      input[type=color] {
+        width: 40px;
+      }
+    }
+
+    button {
+      margin: 0 auto;
+      width: 100px;
+      height: 40px;
+    }
+  }
+  .setings-text{
+    input{
+      border: 2px solid gray ;
+    } 
+    button {
+      margin: 0 auto;
+      width: 100px;
+      height: 40px;
+    }  
+  }
+}
+
+.login {
+  // height: 100vh;
+  margin-bottom: 100px;
+  margin-top: 100px;
+  // background: url(../../../public/iamges/logins.webp);
+}
+
+.google {
+  width: 220px;
+  margin-left: 160px;
+  margin-top: 20px;
+
+  img {
+    background: #06554D;
+    width: 100%;
+  }
+}
+
+@mixin main {
+  width: 100%;
+  text-align: center;
+}
+
+@mixin container {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding-top: 3rem;
+
+}
+
+@mixin containerMain {
+  display: flex;
+  // flex-wrap: wrap;
+  overflow: hidden;
+  
+}
+
+@mixin loginImage {
+  width: 55.5%;
+  object-fit: cover;
+}
+
+@mixin loginForm {
+  width: 44.5%;
+  // background: #0B1219;
+}
+
+@mixin loginFormTitle {
+  font-family: $SegoeUI;
+  font-style: $normal;
+  font-weight: 700;
+  font-size: 1.85rem;
+  line-height: 40px;
+  letter-spacing: 0.04em;
+  color: $white;
+  margin-top: 12%;
+}
+
+@mixin loginFormChild {
+  width: 63%;
+  margin: 6% auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin loginFormCheckbox {
+  width: 63%;
+  margin: 6% auto;
+  position: relative;
+  align-items: center;
+}
+
+@mixin loginFormCheckboxChild {
+  width: 70px;
+  position: absolute;
+  right: 0px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+@mixin loginFormChildInput {
+  display: block;
+  width: 100%;
+  line-height: 0px;
+  border: none;
+  padding: 12px;
+}
+
+@mixin loginFormChildesPlaceholder {
+  font-family: $SegoeUI;
+  font-style: $normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  margin: 10px;
+  align-items: center;
+  letter-spacing: 0.04em;
+  color: #0B1219;
+}
+
+@mixin loginFormChildesLabel {
+  font-family: $SegoeUI;
+  font-style: $normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  margin-bottom: 5px;
+  letter-spacing: 0.04em;
+  color: $white
+}
+
+@mixin loginFormButton {
+  width: 63%;
+  margin: 1rem auto;
+  align-items: center;
+  text-align: center;
+  background-color: $lightGreen;
+  border: none;
+  padding: 13px 0;
+  font-family: $SegoeUI;
+  font-style: $normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 27px;
+  color: #FFFFFF;
+  transition: 0.1s all linear;
+}
+
+.main {
+  @include main
+}
+
+.containeri {
+  @include container;
+}
+
+.containerMain {
+  @include containerMain;
+  img{
+    width: 800px;
+    height: 100%
+  }
+}
+
+.loginForm {
+  @include loginForm;
+}
+
+.loginImage {
+  @include loginImage;
+}
+
+.loginForm {
+  @include loginForm;
+}
+
+.loginImage img {
+  max-width: 100%;
+  height: 100%;
+}
+
+.loginFormTitle {
+  @include loginFormTitle
+}
+
+.loginFormChild {
+  @include loginFormChild;
+
+  input {
+    @include loginFormChildInput;
+  }
+
+  input:focus::placeholder {
+    color: transparent;
+  }
+
+  label {
+    @include loginFormChildesLabel
+  }
+
+  input::placeholder {
+    @include loginFormChildesPlaceholder
+  }
+
+  textarea:focus,
+  input:focus {
+    outline: none;
+  }
+}
+
+.loginFormCheckbox {
+  @include loginFormCheckbox;
+
+  .loginFormCheckboxChild {
+    @include loginFormCheckboxChild;
+
+
+  }
+
+  label {
+    color: #FFFFFF;
+  }
+}
+
+.loginFormButton {
+  @include loginFormButton
+}
+
+#loginError1 {
+  border: 2px solid red !important;
+}
+
+.loginError1 {
+  border: 2px solid red !important;
+}
+
+
+.remcheck {
+  color: #06554D;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  input[type="checkbox"] {
+    margin-right: 7px;
+    width: 15px;
+    height: 15px;
+  }
+
+
+}
+
+.remcheck {
+  input[type="checkbox"]:hover {
+    cursor: pointer;
+  }
+
+  label:hover {
+    cursor: pointer;
+  }
+}
+
+#saveCheck {
+  color: #06554D;
+  font-size: 17px;
+  margin-top: -7px;
+}
+
+#unCheked {
+  color: #E1AA5A;
+}
+
+.login_p {
+  height: 0;
+  font-size: 14px;
+  font-weight: 400;
+  width: 100%;
+  color: red;
+  margin-top: 7px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.password_p {
+  height: 0;
+  font-size: 14px;
+  font-weight: 400;
+  width: 100%;
+  color: red;
+  margin-top: 7px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.loginFormChildid {
+  width: 100%;
+  height: 44px;
+}
+
+.loginFormCheckboxChild {
+  input[type="checkbox"]:checked {
+    accent-color: #E1AA5A !important;
+
+  }
+
+  input[type='checkbox']::after {
+    box-shadow: none !important;
+  }
+}
+
+#loginFormChildButton:hover {
+  cursor: pointer;
+  background-color: #E1AA5A;
+}
+
+#loginFormChildButton:active {
+  background: #9E9E9E;
+}
+
+@mixin containerHeader {
+  width: 53%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto 3rem auto;
+  button{
+    margin: 0 auto;
+    width: 100px;
+    height: 40px;
+  
+  }
+
+}
+
+@mixin containerHeaderH1 {
+  font-family: 'Arian AMU';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  color: #0B1219;
+  margin: 16px
+}
+
+.containerHeader {
+  @include containerHeader;
+}
+
+#containerHeaderH1 {
+  @include containerHeaderH1;
+}
+
+
+
+.RegistrationButton {
+  color: white;
+  font-size: 15px;
+  background: none;
+  border: none;
+  margin-top: -5px;
+
+}
+
+.loginFormCheckbox {
+  display: flex;
+}
+
+@media (max-width:1198px) and (min-width:660px) {
+  #containerHeaderH1 {
+    min-width: 456px;
+  }
+}
+
+@media (max-width:661px) and (min-width:508px) {
+  #containerHeaderH1 {
+    font-size: 14px;
+    min-width: 360px;
+    text-align: center;
+  }
+}
+
+@media (max-width:508px) {
+  #containerHeaderH1 {
+    font-size: 12px;
+  }
+
+  .containerHeader {
+    margin: -38px auto 0 auto;
+  }
+
+  .containerMain {
+    margin-top: -40px;
+  }
+
+}
+
+@media(max-width:955px) and (min-width:768px) {
+  .login_p {
+    font-size: 10px;
+  }
+
+  .password_p {
+    font-size: 10px;
+  }
+}
+
+@media (max-width:768px) and (min-width:393px) {
+  .containeri {
+    padding: 0px;
+  }
+
+  .loginImage {
+    width: 100%;
+
+  }
+
+  .loginForm {
+    width: 100%;
+  }
+
+  #loginFormChildLogin {
+    width: 83%;
+  }
+
+  #loginFormChildPassword {
+    width: 83%;
+  }
+
+  #loginFormChildCheckbox {
+    width: 83%;
+  }
+
+  #loginFormChildButton {
+    width: 83%;
+  }
+
+  .loginFormTitle {
+    font-size: 22px;
+  }
+}
+
+@media (max-width:393px) and (min-width:320px) {
+  .containeri {
+    padding: 0px;
+
+  }
+
+  .loginImage {
+    width: 100%;
+    //  height: 30%;
+  }
+
+  .loginForm {
+    width: 100%;
+  }
+
+  #loginFormChildLogin {
+    width: 83%;
+  }
+
+  #loginFormChildPassword {
+    width: 83%;
+  }
+
+  #loginFormChildCheckbox {
+    width: 83%;
+  }
+
+  #loginFormChildButton {
+    width: 83%;
+  }
+
+  .loginFormTitle {
+    font-size: 22px;
+  }
+
+  .login_p {
+    font-size: 10px;
+  }
+
+  .password_p {
+    font-size: 10px;
+  }
+
+}
+
+@media (max-width:770px) and (min-width:320px) {
+  #container {
+    width: 100% !important;
+  }
+
+  .loginImage {
+    img {
+      width: 100% !important;
+    }
+  }
+
+}

@@ -1,0 +1,88 @@
+.footer{
+    width: 100%;
+    height: 350px;
+    position: relative;
+    z-index: 20;
+    // background-color: black;
+    .containerFooter{
+        overflow: hidden;
+        max-width: 1000px;
+        margin: 0 auto;
+
+        .linkIcons{
+            width: 10%;
+            margin: 0 auto;
+            height: 190px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            .link1{
+                overflow: hidden;
+                width: 25px;
+                // height: 25px;
+                border-radius: 50%;
+
+                a{
+                    font-size: 25px;
+                    color: white;
+                }
+
+            }
+
+            .link2{
+                overflow: hidden;
+                width: 25px;
+                // height: 25px;
+                border-radius: 50%;
+
+                a{
+                    font-size: 25px;
+                    color: white;
+                }
+            }
+
+        }
+        .footerText{
+            width: 82%;
+            margin: 0 auto;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+
+            .textAbout{
+                color: rgb(169, 169, 169)
+            }
+        }
+
+
+
+    }
+            .linkText{
+                cursor: pointer;
+            color: white;
+            text-decoration:underline;
+
+                a{
+
+                    color: white;
+
+                    span{
+                        display:inline-block;
+                        margin-left: 10px;
+
+
+                    }
+
+                }
+
+                span{
+
+
+                    margin-right: 10px
+
+                }
+        }
+
+
+}

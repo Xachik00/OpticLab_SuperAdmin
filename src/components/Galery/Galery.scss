@@ -1,0 +1,122 @@
+.slideshow {
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-bottom: 300px;
+
+}
+.bbb111{
+    margin-top: -10px;
+}
+.line_div {
+    width: 80%;
+    margin: 80px auto 40px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .line {
+        width: 40%;
+        height: 2px;
+        background-color: black;
+    }
+
+    p {
+        font-size: 25px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        margin: 0px 20px;
+    }
+}
+
+.slideshowSlider {
+    // background-color: black;
+    max-width: 1400px;
+    margin: 0 auto;
+    white-space: nowrap;
+    transition: ease 800ms;
+}
+
+.activee {
+    height: 600px;
+    width: 70%;
+    background-color: rgba(128, 128, 128, 0.453);
+    box-shadow: 20px 20px 30px 0px gray;
+    display: inline-flex;
+    border-radius: 40px;
+    z-index: 30000;
+    text-align: center;
+    justify-content: center;
+    margin-left: 70px;
+    margin-top: 50px;
+    transform: scale(0.9);
+    img{
+        border-radius: 40px;
+    }
+}
+.aaa{
+    transform: scale(1.0);
+}
+
+.aslide {
+    height: 300px;
+    margin-top: 100px;
+    // transform: scale(1.1);
+}
+
+
+.slideshowDots_111::-webkit-scrollbar {
+    width: 5px;  
+    height: 5px;
+    
+  }
+
+  .slideshowDots_111::-webkit-scrollbar-track {
+    background: rgb(166, 162, 162);        /* color of the tracking area */
+  }
+
+  .slideshowDots_111::-webkit-scrollbar-thumb {
+    background-color: rgb(77, 76, 76);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid rgba(34, 34, 34, 0.727);  /* creates padding around scroll thumb */
+  }
+
+
+
+.slideshowDots_111 {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x:scroll ;
+    scroll-margin: 10px;
+    scroll-padding-inline-end: 0;
+    scroll-snap-stop: normal;
+    scroll-snap-type: x mandatory;
+
+    .slideshowDots {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        margin-top: 25px;
+
+        .slideshowDot {
+            margin-left: 30px;
+            opacity: 0.3;
+        }
+
+        .slideshowDot img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+
+        }
+        .active {
+            opacity: 1;
+        }
+    }
+}

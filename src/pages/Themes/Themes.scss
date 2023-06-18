@@ -1,0 +1,53 @@
+.themes{
+    max-width: 1200px;
+    margin: 80px auto 0 auto;
+    .line_div {
+        width: 100%;
+        margin: 120px auto  40px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        .line {
+            width: 39%;
+            height: 2px;
+            background-color: black;
+        }
+        p{
+            font-size: 25px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            margin: 0px 20px;
+        }
+    }
+    h2{
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+
+    }
+
+    p{
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .paragraph1{
+        margin-top: 10px;
+
+        .p1{
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        .p2{
+            margin-top: 12px;
+        }
+
+    }
+    .paragraph2 p{
+        margin-top: 20px;
+
+    }
+
+
+
+}

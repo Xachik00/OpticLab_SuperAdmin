@@ -1,0 +1,83 @@
+.Clip_slideshow {
+    width: 73%;
+    margin: 0 auto;
+    overflow: hidden;
+
+}
+
+.Clip_line_div {
+    width: 80%;
+    margin: 100px auto 40px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .Clip_line {
+        width: 40%;
+        height: 2px;
+        background-color: black;
+    }
+
+    p {
+        font-size: 25px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        margin: 0px 20px;
+    }
+}
+
+.Clip_slideshowSlider {
+    max-width: 900px;
+    margin: 0 auto;
+    white-space: nowrap;
+    transition: ease 800ms;
+}
+
+.Clip_activee {
+    display: inline-block;
+    height: 400px;
+    width: 100%;
+    border-radius: 40px;
+    z-index: 30000;
+
+    img {
+        width: 85%;
+    }
+
+}
+
+.Clip_aslide {
+    height: 300px;
+    margin-top: 100px;
+}
+
+
+.Clip_slideshowDots_111 {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .Clip_slideshowDots {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        // margin-top: 25px;
+
+        .Clip_slideshowDot {
+            margin-left: 30px;
+            opacity: 0.3;
+        }
+
+        .Clip_slideshowDot img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .active {
+            opacity: 1;
+        }
+    }
+}
