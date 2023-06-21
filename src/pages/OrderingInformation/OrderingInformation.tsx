@@ -6,6 +6,7 @@ import OrderModal from "../../components/orderModal/Modal";
 import { EditOutlined, CheckOutlined,CloseOutlined } from "@ant-design/icons";
 import { fetchOrders } from "../../store/action/OrderInformationActions";
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
+import { IOrders } from "../../models/model";
 
 
 const URL = process.env.REACT_APP_BASE_URL;
@@ -13,7 +14,7 @@ const URL = process.env.REACT_APP_BASE_URL;
 const OrderingInformation = () => {
   const [modalActive, setModalActive] = useState(false);
   const navigate = useNavigate();
-  const { orders } = useAppSelector((state) => state.orders);
+  const { orders }:  any |IOrders = useAppSelector((state) => state.orders);
   const dispatch = useAppDispatch();
   const [edits, setEdits] = useState(" ");
   const [totals, setTotals] = useState<Object[]>([]);
@@ -25,11 +26,13 @@ const OrderingInformation = () => {
   useEffect(() => {
     dispatch(fetchOrders());
   }, [dispatch]);
+  console.log(orders);
+  
+  let arr1:any =[]
+if(orders != "Table is empty"){
+ arr1 = orders?.map((item: any) => item.table_name);
 
-  let arr1 = orders.map((item: any) => item.table_name);
-console.log(orders);
-
-
+}
 
   function removeDuplicates(arr1: any[]) {
     let headArr: any = [];
@@ -145,13 +148,13 @@ console.log(orders);
         </div>
         <div className="invoices">
           <div className="inv-box">
-            {headArr.map((el: any) => (
+            {headArr?.map((el: any) => (
               <div key={el} className="box">
                 <div className="invoice">
                   <h2>{el}</h2>
                 </div>
                 <form onSubmit={handleSubmit}>
-                  {orders.map((item: any) => {
+                  {orders?.length>0 && orders?.map((item: any) => {
                     if (item.table_name === el)
                       return (
                         <div key={item.id} className="form">

@@ -10,6 +10,8 @@ export const fetchOrders = ()=>{
 
             const response =await axios.get('getColumns'); 
             const item = response.data
+            console.log(response);
+            
             dispatch(fetchSuccess(item));
         }
         catch(error){

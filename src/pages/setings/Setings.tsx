@@ -17,7 +17,7 @@ export const Setings = () => {
 
 
     useEffect(()=>{
-        if(!kov){  
+        if(kov === undefined){  
             let setString:string = JSON.stringify(setings);
             let sett:any = sessionStorage.setItem("setings",setString);
             let setParse = JSON.parse(sett);
