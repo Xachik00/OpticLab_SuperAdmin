@@ -7,10 +7,14 @@ export const fetchLoginStyle = () => {
     return async (dispatch:Dispatch)=>{
         try{
             dispatch(fetching());
-            const response =await axios.get(URL + 'api/v1/superAdmin/loginOptions/1');            
+            const response =await axios.get(URL + 'api/v1/superAdmin/loginOptions/1');  
+            console.log(response);
+                      
             dispatch(fetchSuccess(response.data));            
         }
         catch(error){
+            console.log(error,111111);
+            
             dispatch(fetchError(error as Error));
         }
 
