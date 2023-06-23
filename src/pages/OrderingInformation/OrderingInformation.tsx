@@ -22,17 +22,22 @@ const OrderingInformation = () => {
   const [price1, setPrice1] = useState({});
   const [check, setCheck] = useState({});
   const [count, setCount] = useState<any>({});
+  const [arr1,setArr1] = useState<any>([]);
 
   useEffect(() => {
     dispatch(fetchOrders());
   }, [dispatch]);
-  console.log(orders);
   
-  let arr1:any =[]
-if(orders != "Table is empty"){
- arr1 = orders?.map((item: any) => item.table_name);
 
-}
+
+  useEffect(()=>{
+
+    if(orders != "Table is empty"){
+     let arr:any = orders?.map((item: any) => item.table_name);
+      setArr1(arr);
+     }
+  },[orders,])
+
 
   function removeDuplicates(arr1: any[]) {
     let headArr: any = [];
