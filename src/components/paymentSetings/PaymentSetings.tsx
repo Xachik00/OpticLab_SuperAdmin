@@ -25,7 +25,6 @@ export const PaymentSetings = () => {
    
       
     }
-console.log(pay);
 
     async function save() {
         try{
@@ -37,7 +36,6 @@ console.log(pay);
               
             });
            
-            console.log(response)
           // TODO: remove console.logs before deployment
         
     

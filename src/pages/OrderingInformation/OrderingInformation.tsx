@@ -301,7 +301,6 @@ const OrderingInformation = () => {
         <div className="total">
           <div className="total-box1">
             <h2>
-              {" "}
               {count.price && "total price user " + count.price + " $"}
               <br></br>
               {count.price1 &&
@@ -315,12 +314,12 @@ const OrderingInformation = () => {
         RECORD
       </p>
       <div className="btn-box">
-        <button className="btn2" onClick={() => total(totals)}>
+        {/* <button className="btn2" onClick={() => total(totals)}>
           save
-        </button>
-        <button className="btn2" onClick={() => navigate("/pay")}>
+        </button> */}
+        {/* <button className="btn2" onClick={() => navigate("/pay")}>
           TO CALCULATE
-        </button>
+        </button> */}
         <button
           className="btn2"
           onClick={(e) => {

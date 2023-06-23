@@ -10,7 +10,6 @@ export const fetchOrders = ()=>{
 
             const response =await axios.get('getColumns'); 
             const item = response.data
-            console.log(response);
             
             dispatch(fetchSuccess(item));
         }
@@ -32,11 +31,7 @@ export const deletes = (table: any, item: string)=> {
                 data:     {tableName:table, columnName:item}
                 
               });
-              console.log(JSON.stringify({tableName:table, columnName:item}));
-              console.log(response)
             // TODO: remove console.logs before deployment
-            console.log(JSON.stringify(response?.data));
-            console.log(JSON.stringify(response))
             dispatch(fetchSuccess(response.data));
 
         }catch(error){

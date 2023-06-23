@@ -38,7 +38,6 @@ export const fetchAddHome = (props:string) => {
             await axios.post(URL + 'api/v1/superAdmin/home/add',newImage);     
              fetchHome()
             dispatch(fetching())
-            console.log('acacaca');
             
             
         }
@@ -57,7 +56,6 @@ export const deleteHome = (id:number) => {
             
            const response =  await axios.delete(URL +`api/v1/superAdmin/home/${id}`);     
           
-           console.log(response);
             
            
            fetchHome()

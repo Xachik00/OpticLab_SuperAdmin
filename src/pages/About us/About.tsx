@@ -9,7 +9,6 @@ export function About() {
   
   async function a(){
     const response=await axios.get(URL + 'api/v1/superAdmin/about?title_div=Products and Services')
-    console.log(response);
     
   }
   useEffect(()=>{

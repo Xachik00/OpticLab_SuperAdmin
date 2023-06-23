@@ -8,7 +8,6 @@ export const fetchLoginStyle = () => {
         try{
             dispatch(fetching());
             const response =await axios.get(URL + 'api/v1/superAdmin/loginOptions/1');  
-            console.log(response);
                       
             dispatch(fetchSuccess(response.data));            
         }

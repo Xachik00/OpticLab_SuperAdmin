@@ -8,11 +8,9 @@ import { fetchMirrorColors } from "../../store/action/MirrorColorsAction";
 
 export function Color() {
   const {MirrorColors}=useAppSelector(state=>state.MirrorColors)
-  console.log(MirrorColors);
   const { image } = useAppSelector(state => state.image)
   const dispatch = useAppDispatch()
   const name='Mirror Colors'
-  console.log(MirrorColors);
   
   useEffect(() => {
     dispatch(fetchMirrorColors(name));

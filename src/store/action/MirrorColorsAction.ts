@@ -14,12 +14,10 @@ export const fetchMirrorColors = (props:any) => {
                 arr.push(response.data[key])
             }
             dispatch(fetchSuccess3(arr));
-            // console.log(arr);
             
             
         }
         catch(error){
-            // console.log(error,'error');
             
             dispatch(fetchError3(error as Error));
         }
