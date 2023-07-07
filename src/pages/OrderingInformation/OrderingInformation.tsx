@@ -28,6 +28,7 @@ const OrderingInformation = () => {
     dispatch(fetchOrders());
   }, [dispatch]);
   
+console.log(orders);
 
 
   useEffect(()=>{
