@@ -23,7 +23,6 @@ export const fetchGovernmentMembersInfo = () => {
         try {
             // dispatch(successLoading());
             const response = await axios.get(URL +`api/v1/users`);
-                // console.log(response);
 
             if (response.status === 200 && response.statusText === "OK") {
                 // dispatch(successFullfit(response.data));

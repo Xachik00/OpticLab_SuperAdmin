@@ -6,6 +6,7 @@ import OrderModal from "../../components/orderModal/Modal";
 import { EditOutlined, CheckOutlined,CloseOutlined } from "@ant-design/icons";
 import { fetchOrders } from "../../store/action/OrderInformationActions";
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
+import { IOrders } from "../../models/model";
 
 
 const URL = process.env.REACT_APP_BASE_URL;
@@ -13,7 +14,7 @@ const URL = process.env.REACT_APP_BASE_URL;
 const OrderingInformation = () => {
   const [modalActive, setModalActive] = useState(false);
   const navigate = useNavigate();
-  const { orders } = useAppSelector((state) => state.orders);
+  const { orders }:  any |IOrders = useAppSelector((state) => state.orders);
   const dispatch = useAppDispatch();
   const [edits, setEdits] = useState(" ");
   const [totals, setTotals] = useState<Object[]>([]);
@@ -21,14 +22,21 @@ const OrderingInformation = () => {
   const [price1, setPrice1] = useState({});
   const [check, setCheck] = useState({});
   const [count, setCount] = useState<any>({});
+  const [arr1,setArr1] = useState<any>([]);
 
   useEffect(() => {
     dispatch(fetchOrders());
   }, [dispatch]);
+  
 
-  let arr1 = orders.map((item: any) => item.table_name);
-console.log(orders);
 
+  useEffect(()=>{
+
+    if(orders != "Table is empty"){
+     let arr:any = orders?.map((item: any) => item.table_name);
+      setArr1(arr);
+     }
+  },[orders,])
 
 
   function removeDuplicates(arr1: any[]) {
@@ -145,13 +153,13 @@ console.log(orders);
         </div>
         <div className="invoices">
           <div className="inv-box">
-            {headArr.map((el: any) => (
+            {headArr?.map((el: any) => (
               <div key={el} className="box">
                 <div className="invoice">
                   <h2>{el}</h2>
                 </div>
                 <form onSubmit={handleSubmit}>
-                  {orders.map((item: any) => {
+                  {orders?.length>0 && orders?.map((item: any) => {
                     if (item.table_name === el)
                       return (
                         <div key={item.id} className="form">
@@ -293,7 +301,6 @@ console.log(orders);
         <div className="total">
           <div className="total-box1">
             <h2>
-              {" "}
               {count.price && "total price user " + count.price + " $"}
               <br></br>
               {count.price1 &&
@@ -307,12 +314,12 @@ console.log(orders);
         RECORD
       </p>
       <div className="btn-box">
-        <button className="btn2" onClick={() => total(totals)}>
+        {/* <button className="btn2" onClick={() => total(totals)}>
           save
-        </button>
-        <button className="btn2" onClick={() => navigate("/pay")}>
+        </button> */}
+        {/* <button className="btn2" onClick={() => navigate("/pay")}>
           TO CALCULATE
-        </button>
+        </button> */}
         <button
           className="btn2"
           onClick={(e) => {

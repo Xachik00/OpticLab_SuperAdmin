@@ -15,7 +15,6 @@ export const fetchMirrorCoating = (props:any) => {
                 arr.push(response.data[key])
             }
             dispatch(fetchSuccess1(arr));  
-            console.log(response.data);
              
         }
         catch(error){

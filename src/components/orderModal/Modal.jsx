@@ -3,7 +3,8 @@ import "./modal.scss";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import OrderingInformation from "../../pages/OrderingInformation";
+import { fetchOrders } from '../../store/action/OrderInformationActions';
+import { useAppDispatch } from '../../hooks/redux';
 const URL = process.env.REACT_APP_BASE_URL;
 
 export default function Modal({ active, setActive }) {
@@ -20,6 +21,7 @@ export default function Modal({ active, setActive }) {
   const [image, setImage] = useState();
   const [preview, setPreview] = useState();
   const fileInputRef = useRef();
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     if (image) {
@@ -116,6 +118,8 @@ export default function Modal({ active, setActive }) {
         setPrice1("");
         setActive(false);
       }
+     await dispatch(fetchOrders());
+
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");

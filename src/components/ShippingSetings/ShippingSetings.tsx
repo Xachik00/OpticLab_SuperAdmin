@@ -51,7 +51,6 @@ export const ShippingSetings = () => {
      
         
       }
-  console.log(pay);
 
  
      
@@ -75,7 +74,6 @@ export const ShippingSetings = () => {
           
         });
        
-        console.log(response)
       // TODO: remove console.logs before deployment
     
 

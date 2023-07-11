@@ -10,7 +10,6 @@ import auth from "../../auth";
 import { fetchLoginStyle } from "../../store/action/LoginStyleActions";
 import { useNavigate } from "react-router-dom";
 const URL = process.env.REACT_APP_BASE_URL
-
 export const Login = () => {
 
   const { LoginStyle } = useAppSelector(state => state.LoginStyle)
@@ -58,7 +57,8 @@ export const Login = () => {
     setRegistration(LoginStyle?.registration_title)
     setRemember(LoginStyle?.remember_title)
     setLogin(LoginStyle?.login_title)
-  }, [dispatch])
+    }, [dispatch])
+
 
   async function saveLocalstorageValue() {
     const newText = {
@@ -86,20 +86,21 @@ export const Login = () => {
 
   const loginRequest = async () => {
 
+
     try {
-      const user = await axios.post(`${URL}api/v1/auth/login`, {
-        username: checkLogin.login,
-        password: password.password,
-      });
-      const lifetime = active
-        ? (new Date).setDate((new Date()).getDate() + 356)
-        : (new Date).setDate((new Date()).getDate() + 1)
+        const user = await axios.post(`${URL}api/v1/auth/login`, {
+            username: checkLogin.login,
+            password: password.password,
+        });
+        const lifetime = active
+            ? (new Date).setDate((new Date()).getDate() + 356)
+            : (new Date).setDate((new Date()).getDate() + 1)
 
       localStorage.setItem('auth', JSON.stringify({ ...user.data, lifetime: lifetime }));
 
     } catch (error) {
-      loginError.login = 'error';
-      setLoginError({ ...loginError });
+        loginError.login = 'error';
+        setLoginError({ ...loginError });
     }
   }
 
@@ -137,6 +138,7 @@ export const Login = () => {
     if (check == 2 && auth().role === "superAdmin") {
       navigate("/home")
     }
+
 
 
 
