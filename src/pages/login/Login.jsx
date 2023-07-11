@@ -148,12 +148,12 @@ export const Login = () => {
         <div className="containeri" id="container">
 
           <div className="containerHeader" id="containerHeader">
-            <img src="../../../../image/logo11.webp" />
+            <img src="../../../../images/logo11.webp" />
             <h3 id={"containerHeaderH1"}>{LoginStyle?.title}</h3>
           </div>
           <div className="containerMain">
             <div>
-              <img src="../../../../image/logins.webp" alt="" srcset="" />
+              <img src="../../../../images/logins.webp" alt="" srcset="" />
 
             </div>
 
