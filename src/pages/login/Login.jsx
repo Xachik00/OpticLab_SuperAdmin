@@ -13,8 +13,8 @@ const URL = process.env.REACT_APP_BASE_URL
 
 export const Login = () => {
 
-    const { LoginStyle } = useAppSelector(state => state.LoginStyle)
-    const dispatch = useAppDispatch()
+  const { LoginStyle } = useAppSelector(state => state.LoginStyle)
+  const dispatch = useAppDispatch()
 
 
 
@@ -41,10 +41,10 @@ export const Login = () => {
   const [signin, setSignin] = useState('')
 
   const navigate = useNavigate();
-    const [checkLogin, setCheckLogin] = useState({});
-    const [loginError, setLoginError] = useState({});
-    const [password, setPassword] = useState({});
-    const [passwordError, setPasswordError] = useState({});
+  const [checkLogin, setCheckLogin] = useState({});
+  const [loginError, setLoginError] = useState({});
+  const [password, setPassword] = useState({});
+  const [passwordError, setPasswordError] = useState({});
 
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export const Login = () => {
     setRegistration(LoginStyle?.registration_title)
     setRemember(LoginStyle?.remember_title)
     setLogin(LoginStyle?.login_title)
-    }, [dispatch])
+  }, [dispatch])
 
   async function saveLocalstorageValue() {
     const newText = {
@@ -80,68 +80,68 @@ export const Login = () => {
   }
 
 
-  
-  
+
+
 
 
   const loginRequest = async () => {
 
     try {
-        const user = await axios.post(`${URL}api/v1/auth/login`, {
-            username: checkLogin.login,
-            password: password.password,
-        });
-        const lifetime = active
-            ? (new Date).setDate((new Date()).getDate() + 356)
-            : (new Date).setDate((new Date()).getDate() + 1)
+      const user = await axios.post(`${URL}api/v1/auth/login`, {
+        username: checkLogin.login,
+        password: password.password,
+      });
+      const lifetime = active
+        ? (new Date).setDate((new Date()).getDate() + 356)
+        : (new Date).setDate((new Date()).getDate() + 1)
 
-        localStorage.setItem('auth', JSON.stringify({ ...user.data, lifetime: lifetime }));
+      localStorage.setItem('auth', JSON.stringify({ ...user.data, lifetime: lifetime }));
 
     } catch (error) {
-        loginError.login = 'error';
-        setLoginError({ ...loginError });
+      loginError.login = 'error';
+      setLoginError({ ...loginError });
     }
-}
+  }
 
-const checkValidation = async (e) => {
-  e.preventDefault();
-  let check = 0;
+  const checkValidation = async (e) => {
+    e.preventDefault();
+    let check = 0;
 
 
-  if (checkLogin['login'] && checkLogin['login'].length >= 3 && checkLogin['login'].length <= 38) {
+    if (checkLogin['login'] && checkLogin['login'].length >= 3 && checkLogin['login'].length <= 38) {
       check++;
       setLoginError({});
-  } else if (checkLogin['login'] == '' || checkLogin['login'] == null) {
+    } else if (checkLogin['login'] == '' || checkLogin['login'] == null) {
       loginError.login = 'ricuared';
       setLoginError({ ...loginError });
-  } else if (checkLogin['login'] && checkLogin['login'].length < 3 || checkLogin['login'].length > 38) {
+    } else if (checkLogin['login'] && checkLogin['login'].length < 3 || checkLogin['login'].length > 38) {
       loginError.login = 'min 3, max 38';
       setLoginError({ ...loginError });
-  }
+    }
 
-  //  password validation
-  if (password['password'] && password['password'].length >= 3 && password['password'].length <= 38) {
+    //  password validation
+    if (password['password'] && password['password'].length >= 3 && password['password'].length <= 38) {
       check++;
       setPasswordError({});
-  }
-  else if (password['password'] == '' || password['password'] == null) {
+    }
+    else if (password['password'] == '' || password['password'] == null) {
       passwordError.password = 'Error';
       setPasswordError({ ...passwordError });
-  }
-  else if (password['password'] && password['password'].length < 3 || password['password'].length > 38) {
+    }
+    else if (password['password'] && password['password'].length < 3 || password['password'].length > 38) {
       passwordError.password = 'Error';
       setPasswordError({ ...passwordError });
-  }
-  await loginRequest();
- 
-  if (check == 2 && auth().role === "superAdmin") {
+    }
+    await loginRequest();
+
+    if (check == 2 && auth().role === "superAdmin") {
       navigate("/home")
+    }
+
+
+
+
   }
- 
-
-
-
-}
   return (
     <div className="login">
       <div className="main">
@@ -150,17 +150,6 @@ const checkValidation = async (e) => {
           <div className="containerHeader" id="containerHeader">
             <img src="../../../../image/logo11.webp" />
             <h3 id={"containerHeaderH1"}>{LoginStyle?.title}</h3>
-            
-            {/* {
-              edit ?
-                <div className="txt" >
-                  <input value={text} onChange={(e) => setText(e.target.value)} />
-                  <button onClick={() => { saveTitle(); setEdit(false) }} style={{ color: color || LoginStyle?.login_color, background: colorbtn || LoginStyle?.buttonBg_color }}>save</button>
-                </div> :
-                <>
-                  <button onClick={() =>{ setEdit(true),setText(LoginStyle?.title)}} style={{ color: color || LoginStyle?.login_color, background: colorbtn || LoginStyle?.buttonBg_color }}>edit</button>
-                </>
-            } */}
           </div>
           <div className="containerMain">
             <div>
@@ -173,28 +162,28 @@ const checkValidation = async (e) => {
               <div id="loginFormChildLogin" className="loginFormChild">
                 <label style={{ color: color || LoginStyle?.login_color }}>{login || LoginStyle?.login_title}</label>
                 <Input placeholder="Login" name="login"
-                                    onChange={(e) => {
-                                        e.preventDefault();
-                                        setCheckLogin({ ...checkLogin, [e.target.name]: e.target.value })
-                                    }}
-                                    style={{ "borderRadius": "0px" }}
-                                    id={loginError.login ? "loginError1" : ""}
-                                    className={loginError.login ? "loginError1 loginFormChildid" : "loginFormChildid"}
-                                    
-                                />
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setCheckLogin({ ...checkLogin, [e.target.name]: e.target.value })
+                  }}
+                  style={{ "borderRadius": "0px" }}
+                  id={loginError.login ? "loginError1" : ""}
+                  className={loginError.login ? "loginError1 loginFormChildid" : "loginFormChildid"}
+
+                />
                 <p className="login_p">{loginError.login} </p>
               </div>
 
               <div id="loginFormChildPassword" className="loginFormChild">
                 <label style={{ color: color || LoginStyle?.login_color }}>{passwordd || LoginStyle?.password_title}</label>
                 <Input.Password
-                                    placeholder="*******"
-                                    iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-                                    name='password'
-                                    onChange={(e) => {
-                                        e.preventDefault();
-                                        setPassword({ ...password, [e.target.name]: e.target.value })
-                                    }}
+                  placeholder="*******"
+                  iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                  name='password'
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setPassword({ ...password, [e.target.name]: e.target.value })
+                  }}
                   style={{ "borderRadius": "0px" }}
                   className={loginError.login ? "loginError1 loginFormChildid" : "loginFormChildid"}
                 />
@@ -205,7 +194,7 @@ const checkValidation = async (e) => {
 
               <div id="loginFormChildCheckbox" className="loginFormCheckbox">
                 {/* <button className="RegistrationButton" onClick={(e) => { setModalActive(true); e.preventDefault() }} style={{ color: color || LoginStyle?.login_color }}>{registration || LoginStyle?.registration_title}</button> */}
-<label> Remember </label>
+                <label> Remember </label>
                 <div id="loginFormCheckboxChild" className="loginFormCheckboxChild">
 
                   <div className="remcheck"> <input type="checkbox"
@@ -233,33 +222,6 @@ const checkValidation = async (e) => {
           </div>
         </div>
       </div>
-      {/* <div className="setings-div">
-        <div className="setings">
-          <div>
-            <span>Header,Footer,Login background Color: </span>
-            <input type="color" value={bgcolor || LoginStyle.loginBg_color} onChange={(e) => { setBgColor(e.target.value) }}></input>
-          </div>
-          <div>
-            <span>Login Color: </span>
-            <input type="color" value={color || LoginStyle?.login_color} onChange={(e) => { setColor(e.target.value) }}></input>
-          </div>
-          <div>
-            <span>Button background Color: </span>
-            <input type="color" value={colorbtn || LoginStyle.buttonBg_color} onChange={(e) => { setColorbtn(e.target.value) }}></input>
-          </div>
-          <button style={{ color: color || LoginStyle?.login_color, background: colorbtn || LoginStyle?.buttonBg_color }} onClick={() => saveLocalstorage()}>save</button>
-        </div>
-        <div className="setings-text">
-          <input type="text" value={signup || LoginStyle?.signUp_title} onChange={(e) => setSignup(e.target.value)} />
-          <input type="text" value={login || LoginStyle?.login_title} onChange={(e) => setLogin(e.target.value)} />
-          <input type="text" value={passwordd || LoginStyle?.password_title} onChange={(e) => setPasswordd(e.target.value)} />
-          <input type="text" value={registration || LoginStyle?.registration_title} onChange={(e) => setRegistration(e.target.value)} />
-          <input type="text" value={remember || LoginStyle?.remember_title} onChange={(e) => setRemember(e.target.value)} />
-          <input type="text" value={signin || LoginStyle?.signIn_title} onChange={(e) => setSignin(e.target.value)} />
-          <button style={{ color: color || LoginStyle?.login_color, background: colorbtn || LoginStyle?.buttonBg_color }} onClick={() => saveLocalstorageValue()}>save</button>
-        </div>
-      </div> */}
-      {/* <Modal active={modalActive} setActive={setModalActive} /> */}
     </div>
   );
 }
