@@ -2,7 +2,6 @@ import { ComponySetings } from '../../components/componySetings'
 import { LoginSetings } from '../../components/loginSetings'
 import { PaymentSetings } from '../../components/paymentSetings'
 import { ShippingSetings } from '../../components/ShippingSetings'
-import { PostSetings } from '../../components/postSetings'
 import { useEffect, useState } from 'react'
 import './setings.scss'
 import { CommiteSetings } from '../../components/commiteSetings'
@@ -59,20 +58,18 @@ export const Setings = () => {
                     <li className={setings === 2 ? 'activ' : ''} onClick={() =>  saveLocalStorage(2)}>Login Setings</li>
                     <li className={setings === 3 ? 'activ' : ''} onClick={() =>  saveLocalStorage(3)}>Payment Setings </li>
                     <li className={setings === 4 ? 'activ' : ''} onClick={() =>  saveLocalStorage(4)}>Shipping Setings </li>
-                    <li className={setings === 5 ? 'activ' : ''} onClick={() =>  saveLocalStorage(5)}>Post Setings</li>
-                    <li className={setings === 6 ? 'activ' : ''} onClick={() =>  saveLocalStorage(6)}>Commits{seenArr!==0&&<p>{seenArr}</p>}</li>
-                    <li className={setings === 7 ? 'activ' : ''} onClick={() =>  saveLocalStorage(7)}>Style Settings</li>
-                    <li className={setings === 8 ? 'activ' : ''} onClick={() =>  saveLocalStorage(8)}>Add Admin</li>
+                    <li className={setings === 5 ? 'activ' : ''} onClick={() =>  saveLocalStorage(5)}>Commits{seenArr!==0&&<p>{seenArr}</p>}</li>
+                    <li className={setings === 6 ? 'activ' : ''} onClick={() =>  saveLocalStorage(6)}>Style Settings</li>
+                    <li className={setings === 7 ? 'activ' : ''} onClick={() =>  saveLocalStorage(7)}>Add Admin</li>
                 </ul>
             </div>
-            {setings === 1 && <ComponySetings />}
-            {setings === 2 && <LoginSetings />}
-            {setings === 3 && <PaymentSetings />}
-            {setings === 4 && <ShippingSetings />}
-            {setings === 5 && <PostSetings />}
-            {setings === 6 && <CommiteSetings/>}
-            {setings === 7 && <Style/>}
-            {setings === 8 && <Modal/>}
+            {setings === 1 && <div className='Component-setings'><ComponySetings /></div>}
+            {setings === 2 && <div className='Component-setings'><LoginSetings /></div>}
+            {setings === 3 && <div className='Component-setings'><PaymentSetings /></div>}
+            {setings === 4 && <div className='Component-setings'><ShippingSetings /></div>}
+            {setings === 5 && <div className='Component-setings'><CommiteSetings/></div>}
+            {setings === 6 && <div className='Component-setings'><Style/></div>}
+            {setings === 7 && <div className='Component-setings'><Modal/></div>}
 
         </div>
     )

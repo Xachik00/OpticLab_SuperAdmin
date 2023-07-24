@@ -23,6 +23,7 @@ export  function Eddditor({setEdit}) {
 
     localStorage.removeItem('editor')
     localStorage.setItem('editor',content)
+    console.log(content);
     setContent(e);
   }
   return (

@@ -5,6 +5,7 @@ import { Eddditor } from '../../components/Editor';
 export  function Themes() {
   const [edit,setEdit]=useState(false)
   const [content, setContent] = useState(localStorage.getItem('editor')||(""));
+console.log(content);
 
   return (
     <div className="themes">

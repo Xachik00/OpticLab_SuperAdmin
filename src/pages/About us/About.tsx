@@ -8,8 +8,7 @@ export function About() {
   const navigate=useNavigate();
   
   async function a(){
-    const response=await axios.get(URL + 'api/v1/superAdmin/about?title_div=Products and Services')
-    
+    await axios.get(URL + 'api/v1/superAdmin/about?title_div=Products and Services')
   }
   useEffect(()=>{
     a()

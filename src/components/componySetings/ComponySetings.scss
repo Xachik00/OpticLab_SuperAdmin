@@ -1,0 +1,44 @@
+.ComponySetings{
+    .Setings-sayt{
+        div{
+            width: 50%;
+            display: flex;
+            justify-content: space-between  ;
+            align-items: center;
+            position: relative;
+            p{
+                width: 200px;
+                height: 70px;
+                background-color: rgba(128, 128, 128, 0.803);
+                color: white;
+                font-size: 25px;
+                position: absolute;
+                left: 350px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                opacity: 0;
+                // text-align: center;
+            }
+            &:hover {
+                p{
+                    opacity: 1;
+    
+                }
+            }
+            input{
+                border: 2px solid ;
+                width: 400px;
+            }
+        }
+    }
+    .button-sayt{
+        margin: 0 auto;
+        button{
+            padding: 15px;
+            border-radius: 8px;
+            background-color: green;
+            color: white;
+        }
+    }   
+}

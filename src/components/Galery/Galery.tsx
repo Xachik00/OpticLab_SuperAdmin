@@ -13,9 +13,9 @@ export function Galery() {
 const [add,setAdd]=useState(false);
   const navigate = useNavigate()
 
-  useEffect(() => {
-    dispatch(fetchHome())
-  }, [dispatch])
+  useEffect( () => {
+     dispatch(fetchHome())
+    }, [dispatch])
 
   useEffect(() => {
     if (image.length !== '' && image != null && image != undefined && image && add) {
@@ -60,7 +60,9 @@ const [add,setAdd]=useState(false);
     };
   }, [resetTimeout, fun, Home.length, setIndex, index]);
 
+  
   return (
+    <>{Home[0]==undefined?<div style={{margin:'100px'}}>Loading</div>:
     <div>
       <div className="line_div">
         <div className="line"></div>
@@ -104,6 +106,6 @@ const [add,setAdd]=useState(false);
           </div>
         </div>
       </div>
-    </div>
+    </div>}</>
   );
 }

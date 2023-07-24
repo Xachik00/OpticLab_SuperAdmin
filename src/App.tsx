@@ -21,13 +21,13 @@ function App() {
   const loc: string | any=localStorage.getItem( "auth" );
   const local =JSON.parse( loc ); 
   
-  useEffect(()=>{
+//   useEffect(()=>{
     
-    if (local  == null && local?.role != "superAdmin" && local?.username!= "superAdmin" ) {
-        navigate( "/login" )
-    };  
+//     if (local  == null && local?.role != "superAdmin" && local?.username!= "superAdmin" ) {
+//         navigate( "/login" )
+//     };  
 
-},[location])
+// },[location])
 
 
 
