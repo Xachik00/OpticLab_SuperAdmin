@@ -1,7 +1,7 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import axios from "../../axios/axios";
 import {  fetching, fetchSuccess, fetchError } from "../slice/OrderInformationSlice";
-const URL = process.env.REACT_APP_BASE_URL;
+import adminaxios from "../../axios/adminaxios";
 
 export const fetchOrders = ()=>{
     return async (dispatch:Dispatch)=>{
@@ -25,11 +25,10 @@ export const deletes = (table: any, item: string)=> {
     return async (dispatch:Dispatch)=>{
         try{
             dispatch(fetching());
-            const response = await  axios({
+            const response = await  adminaxios({
                 method: 'delete',
-                url: URL + 'api/v1/superAdmin/dropColumn',
+                url: 'dropColumn',
                 data:     {tableName:table, columnName:item}
-                
               });
             dispatch(fetchSuccess(response.data));
 

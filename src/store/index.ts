@@ -10,7 +10,8 @@ import GovernmetMembersFullInfoReducer from './slice/GovernmetMembersFullInfo';
 import HomeReducer from './slice/HomeSlice';
 import ordersReducer from "./slice/OrderInformationSlice";
 import MessigeReducer from "./slice/MessigeSlice";
-import ClipReducer from "./slice/ClipSlice"
+import ClipReducer from "./slice/ClipSlice";
+import AboutReducer from "./slice/AboutSlice";
 
 
 export const store = configureStore({
@@ -26,7 +27,8 @@ export const store = configureStore({
     Home: HomeReducer,
     orders: ordersReducer,
     Messige: MessigeReducer,
-    Clip: ClipReducer
+    Clip: ClipReducer,
+    About:AboutReducer,
   }
 })
 

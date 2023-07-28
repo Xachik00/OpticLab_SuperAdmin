@@ -9,29 +9,27 @@ import { Input } from 'antd';
 import auth from "../../auth";
 import { fetchLoginStyle } from "../../store/action/LoginStyleActions";
 import { useNavigate } from "react-router-dom";
-const URL = process.env.REACT_APP_BASE_URL
-export const Login = () => {
 
+const URL = process.env.REACT_APP_BASE_URL
+
+export const Login = () => {
   const { LoginStyle } = useAppSelector(state => state.LoginStyle)
   const dispatch = useAppDispatch()
-
-
-
   const [active, setActive] = useState(false);
-  const [modalActive, setModalActive] = useState(false)
+  // const [modalActive, setModalActive] = useState(false)
   const [color, setColor] = useState()
   const [colorbtn, setColorbtn] = useState()
   const [bgcolor, setBgColor] = useState()
 
-  async function saveLocalstorage() {
-    const newColor = {
-      loginBg_color: bgcolor,
-      login_color: color,
-      buttonBg_color: colorbtn
-    }
-    await axios.put(URL + 'api/v1/superAdmin/changeLoginOptions', newColor)
-    dispatch(fetchLoginStyle())
-  }
+  // async function saveLocalstorage() {
+  //   const newColor = {
+  //     loginBg_color: bgcolor,
+  //     login_color: color,
+  //     buttonBg_color: colorbtn
+  //   }
+  //   await axios.put(URL + 'api/v1/superAdmin/changeLoginOptions', newColor)
+  //   dispatch(fetchLoginStyle())
+  // }
   const [signup, setSignup] = useState('')
   const [login, setLogin] = useState('')
   const [passwordd, setPasswordd] = useState('')
@@ -60,29 +58,24 @@ export const Login = () => {
     }, [dispatch])
 
 
-  async function saveLocalstorageValue() {
-    const newText = {
-      login_title: login,
-      password_title: passwordd,
-      signUp_title: signup,
-      signIn_title: signin,
-      registration_title: registration,
-      remember_title: remember
-    }
-    await axios.put(URL + 'api/v1/superAdmin/changeLoginOptions', newText)
-  }
-  async function saveTitle() {
-    const newTitle = {
-      title: text
-    }
-    await axios.put(URL + 'api/v1/superAdmin/changeLoginOptions', newTitle)
+  // async function saveLocalstorageValue() {
+  //   const newText = {
+  //     login_title: login,
+  //     password_title: passwordd,
+  //     signUp_title: signup,
+  //     signIn_title: signin,
+  //     registration_title: registration,
+  //     remember_title: remember
+  //   }
+  //   await axios.put(URL + 'api/v1/superAdmin/changeLoginOptions', newText)
+  // }
+  // async function saveTitle() {
+  //   const newTitle = {
+  //     title: text
+  //   }
+  //   await axios.put(URL + 'api/v1/superAdmin/changeLoginOptions', newTitle)
 
-  }
-
-
-
-
-
+  // }
 
   const loginRequest = async () => {
 
@@ -92,6 +85,7 @@ export const Login = () => {
             username: checkLogin.login,
             password: password.password,
         });
+        console.log(user,'user');
         const lifetime = active
             ? (new Date).setDate((new Date()).getDate() + 356)
             : (new Date).setDate((new Date()).getDate() + 1)
@@ -155,7 +149,7 @@ export const Login = () => {
           </div>
           <div className="containerMain">
             <div>
-              <img src="../../../../images/logins.webp" alt="" srcset="" />
+              <img src="../../../../images/logins.webp" alt="" />
 
             </div>
 

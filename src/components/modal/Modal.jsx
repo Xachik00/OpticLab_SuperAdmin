@@ -3,11 +3,8 @@ import "./Modal.scss"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRef, useEffect } from "react";
-import axios from 'axios';
-// const USER_REGEX = /^[A-z][A-z0-9-_][@.]{3,23}$/;
+import useraxios from '../../axios/axios';
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-// const REGISTER_URL = '/register';
-const URL = process.env.REACT_APP_BASE_URL;
 
 
 export default function Modal() {
@@ -60,9 +57,9 @@ export default function Modal() {
        
         try {
             
-            const response = await  axios({
+            const response = await  useraxios({
                 method: 'post',
-                url: URL + 'api/v1/users/add',
+                url: 'add',
                 data: {
                   email: user,
                   password: pwd
@@ -94,8 +91,8 @@ export default function Modal() {
               <div className='contain'>
                 <p className='p1'><h1>Registration on the site</h1></p>
                 <form onSubmit={handleSubmit} className='containform'>
-                    <div className='inputers'>
-                        <p>email</p>
+                    <div className='inputs'>
+                        <p>Email</p>
                       <input
                      type="text"
                      id="username"
@@ -111,7 +108,7 @@ export default function Modal() {
                  />
 
 
-                         <p>password</p>
+                         <p>Password</p>
                      <input
                      type="password"
                      id="password"
@@ -126,7 +123,7 @@ export default function Modal() {
 
 
 
-                         <p>password</p>
+                         <p>Password</p>
                     <input
                      type="password"
                      id="confirm_pwd"

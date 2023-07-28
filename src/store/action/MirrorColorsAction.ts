@@ -1,5 +1,5 @@
 import { Dispatch } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios from "../../axios/axios";
 import {  fetching3, fetchSuccess3, fetchError3 } from "../slice/MirrorColorsSlice";
 const URL = process.env.REACT_APP_BASE_URL;
 
@@ -8,12 +8,13 @@ export const fetchMirrorColors = (props:any) => {
         try{
             
             dispatch(fetching3());
-            const response =await axios.get(URL + 'api/v1/superAdmin/styles?title_div='+props);            
+            const response =await axios.get('styles?title_div='+props);            
             const arr=[]
             for(let key in response.data){
                 arr.push(response.data[key])
             }
             dispatch(fetchSuccess3(arr));
+            console.log(arr);
             
             
         }

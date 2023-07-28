@@ -1,16 +1,15 @@
 import { Dispatch } from "@reduxjs/toolkit";
-import axios from "axios";
-
+import axios from "../../axios/axios";
+import adminaxios from "../../axios/adminaxios";
 import {  fetchingClip, fetchSuccessClip, fetchErrorClip } from "../slice/ClipSlice";
 import {  fetching } from "../slice/GovernmetMembersFullInfo";
-const URL = process.env.REACT_APP_BASE_URL;
 
 export const fetchClip = (props:any) => {
     return async (dispatch:Dispatch)=>{
         try{
             
             dispatch(fetchingClip());
-            const response =await axios.get(URL + 'api/v1/superAdmin/styles?title_div='+props);            
+            const response =await axios.get('styles?title_div='+props);            
             const arr=[]
             for(let key in response.data){
                 arr.push(response.data[key])
@@ -33,7 +32,7 @@ export const fetchAddClip = (name:string,props:string) => {
                 image:props
             }
             
-            await axios.post(URL + 'api/v1/superAdmin/styles/add',newImage);     
+            await adminaxios.post('styles/add',newImage);     
             fetchClip(name)
             dispatch(fetching())            
 
@@ -55,7 +54,7 @@ export const EditeClip = (id:number,edit:string) => {
                 id:id,
                 title_div:edit,
             }
-            const response =  await axios.put(URL + 'api/v1/superAdmin/styles',ed);       
+            const response =  await adminaxios.put('styles',ed);       
             console.log(response.data)
            fetchClip(response.data);
         }
@@ -67,7 +66,7 @@ export const EditeClip = (id:number,edit:string) => {
 export const deleteClip = (name:string,id:number) => {
     return async ()=>{
         try{     
-           const response =  await axios.delete(URL +`api/v1/superAdmin/styles/${id}`);
+           const response =  await adminaxios.delete(`styles/${id}`);
            console.log(response);
            fetchClip(name)
 

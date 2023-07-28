@@ -1,11 +1,18 @@
 .ComponySetings{
     .Setings-sayt{
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
         div{
-            width: 50%;
+            width: 100%;
             display: flex;
+            // justify-content: center;
             justify-content: space-between  ;
             align-items: center;
-            position: relative;
+            // position: relative;
             p{
                 width: 200px;
                 height: 70px;
@@ -13,7 +20,7 @@
                 color: white;
                 font-size: 25px;
                 position: absolute;
-                left: 350px;
+                // left: 350px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -28,17 +35,46 @@
             }
             input{
                 border: 2px solid ;
-                width: 400px;
+                width: 50%
             }
         }
     }
     .button-sayt{
+        display: flex;
         margin: 0 auto;
         button{
+
+            // display: flex;
             padding: 15px;
             border-radius: 8px;
             background-color: green;
             color: white;
+            margin: 20px auto;
+            font-size: 20px;
+            width: 100px;
+            text-align: center;
+            // align-items: center;
+            
         }
     }   
+}
+
+@media(max-width:768px){
+    .ComponySetings{
+        .button-sayt{
+            display: flex;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+            
+        }
+    .Setings-sayt{
+        div{
+            flex-direction: column;
+            input{
+                width: 280px;
+            }
+        }
+    }
+}
 }

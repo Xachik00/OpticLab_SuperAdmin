@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { fetchOrders } from '../../store/action/OrderInformationActions';
 import { useAppDispatch } from '../../hooks/redux';
+import  axiosadmin  from '../../axios/adminaxios';
 const URL = process.env.REACT_APP_BASE_URL;
 
 export default function Modal({ active, setActive }) {
@@ -42,9 +43,9 @@ export default function Modal({ active, setActive }) {
       if (price === '' || price1 === '') {
         if (price === '' && price1 === '' && img !== "") {
 
-          const response = await axios({
+          const response = await axiosadmin({
             method: 'post',
-            url: URL + 'api/v1/superAdmin/addTable',
+            url: 'addTable',
             data: [depName, { columnName: item }, { value: img }]
 
           });
@@ -60,9 +61,9 @@ export default function Modal({ active, setActive }) {
         }
         if (price === '' && price1 === '' && img === "") {
 
-          const response = await axios({
+          const response = await axiosadmin({
             method: 'post',
-            url: URL + 'api/v1/superAdmin/addTable',
+            url: 'addTable',
             data: [depName, { columnName: item }]
 
           });
@@ -76,9 +77,9 @@ export default function Modal({ active, setActive }) {
           setActive(false);
         }
         if (price === "" && price1 !== "") {
-          const response = await axios({
+          const response = await axiosadmin({
             method: 'post',
-            url: URL + 'api/v1/superAdmin/addTable',
+            url: 'addTable',
             data: [depName, price ? { columnName: item } : { columnName: item }, price1]
           });
 
@@ -90,9 +91,9 @@ export default function Modal({ active, setActive }) {
           setPrice1("");
           setActive(false);
         } else if (price1 === "" && price !== "") {
-          const response = await axios({
+          const response = await axiosadmin({
             method: 'post',
-            url: URL + 'api/v1/superAdmin/addTable',
+            url: 'addTable',
             data: [depName, price ? { columnName: item } : { columnName: item }, price,]
           });
           
@@ -104,13 +105,13 @@ export default function Modal({ active, setActive }) {
           setActive(false);
         }
       } else {
-        const response = await axios({
-          method: 'post',
-          url: URL + 'api/v1/superAdmin/addTable',
+        const response = await axiosadmin({
+          method: 'POST',
+          url: 'addTable',
           data: [depName, price ? { columnName: item } : { columnName: item }, price, price1]
         });
 
-   
+   console.log(response);
         setSuccess(true);
         setDepName("");
         setItem("");

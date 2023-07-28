@@ -3,21 +3,26 @@ import "./Galery.scss";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { Upload } from "../../components/upload";
 import { fetchHome, fetchAddHome, deleteHome } from "../../store/action/HomeAction";
-import { DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined, FullscreenOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import { RemoveItem } from "../removeItem";
 
 export function Galery() {
   const { image }: any = useAppSelector((state) => state.image);
-  const { Home }: any = useAppSelector((state) => state.Home)
+  const { Home, loading }: any = useAppSelector((state) => state.Home)
   const dispatch = useAppDispatch();
-const [add,setAdd]=useState(false);
+  const [add, setAdd] = useState(false);
   const navigate = useNavigate()
+  const [deletePage,setDeletePage]=useState(false)
+  const [id,setId]=useState(0)
 
-  useEffect( () => {
-     dispatch(fetchHome())
-    }, [dispatch])
 
   useEffect(() => {
+    dispatch(fetchHome())
+  }, [dispatch])
+
+  useEffect(() => {
+
     if (image.length !== '' && image != null && image != undefined && image && add) {
       dispatch(fetchAddHome(image))
       navigate(0)
@@ -37,8 +42,8 @@ const [add,setAdd]=useState(false);
   }, []);
 
 
-  function deleteImage(id: number) {
-    dispatch(deleteHome(id))
+  async function deleteImage(id: number) {
+    await dispatch(deleteHome(id))
     navigate(0)
   }
 
@@ -60,38 +65,20 @@ const [add,setAdd]=useState(false);
     };
   }, [resetTimeout, fun, Home.length, setIndex, index]);
 
-  
+
   return (
-    <>{Home[0]==undefined?<div style={{margin:'100px'}}>Loading</div>:
-    <div>
-      <div className="line_div">
-        <div className="line"></div>
-        <p>Photo Galery</p>
-        <div className="line"></div>
-      </div>
-      <div className="slideshow">
-        <div
-          className="slideshowSlider"
-          style={{ transform: `translate3d(${-index * 70}%, 0, 0)` }}
-        >
-          {Home?.map((el: any, inde: number) => (
-            <div
-              className={index !== inde ? "activee" : "activee aaa"}
-              key={inde}
-              onClick={() => {
-                setIndex(inde);
-              }}
-            >
-              <img src={el.image} />
-            </div>
-          ))}
+    <>{loading ? <div style={{ margin: '100px' }}>Loading</div> :
+      <div className="photoGalery">
+        <div className="line_div">
+          <div className="line"></div>
+          <p>Photo Galery</p>
+          <div className="line"></div>
         </div>
-        <div className="slideshowDots_111">
-          <div className="slideshowDots">
+          <div className="imageDiv">
             {Home?.map((el: any, idx: number) => (
               <div
                 key={idx}
-                className={`slideshowDot${index === idx ? " active" : ""}`}
+                className='imagesItem'
                 onClick={() => {
                   setIndex(idx);
                 }}
@@ -99,13 +86,16 @@ const [add,setAdd]=useState(false);
 
                 <img src={el.image} />
 
-                <DeleteOutlined onClick={() => deleteImage(el.id)} />
+                <div className="deleteviewDiv">
+                <FullscreenOutlined />
+                  <DeleteOutlined onClick={() =>{ setDeletePage(true);setId(el.id)}} className="deleteImages" >Delete</DeleteOutlined>
+                  </div>
               </div>
             ))}
-            <button className="bbb111" onClick={() => setAdd(true)}><Upload  name={'Galery'}/></button>
+            <button className="uploadImage" onClick={() => setAdd(true)}><Upload name={'Galery'} /></button>
           </div>
-        </div>
-      </div>
-    </div>}</>
+        {deletePage&&<RemoveItem deleteItem={deleteImage} name={'Image'} setDeletePage={setDeletePage} id={id}/>}
+
+      </div>}</>
   );
 }

@@ -1,101 +1,144 @@
-@mixin flex{
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-}
+// @mixin flex {
+//     display: flex;
+//     justify-content: space-around;
+//     align-items: flex-start;
+// }
 
 .about {
     max-width: 1200px;
     margin: 0 auto;
     margin-top: 100px;
+    margin-bottom: 100px;
 
     .line_div {
-    width: 100%;
-    margin: 40px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        width: 100%;
+        margin: 40px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-    .line {
-        width: 39%;
-        height: 2px;
-        background-color: black;
-    }
-    p{
-        font-size: 25px;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        margin: 0px 20px;
-    }
-}
-
-
-
-.dv1{
-    @include flex();
-        color: rgb(27, 27, 27);
-    .titleText1{
-        margin-left: 100px;
-    h3{
-        margin-bottom: 40px;
-        font-size: 40px;
-        font-weight: 500;
-        letter-spacing: 3px;
-    }
-    p{
-        letter-spacing: 3px;
-    }
-}
-.butt{
-       display: flex;
-    justify-content: flex-end;
-.submit{
-    width: 200px;
-    height: 50px;
-    background: darkgray;
-
-}
-}
-
-}
-
-.dv2{
-    @include flex();
-    margin-top: 70px;
-    .imageDiv2{
-        margin-left: 230px;
-    }
-
-    .titleText2{
-        h3{
-        margin-bottom: 40px;
-        font-size: 34px;
-        font-weight: 500;
-        letter-spacing: 2px;
-        }
-        p{
-            letter-spacing: 3px;
+        .line {
+            width: 39%;
+            height: 2px;
+            background-color: black;
         }
 
+        p {
+            font-size: 25px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            margin: 0px 20px;
+             width: 20%;
+             text-align: center;
+        }
+    }
+    .About_div{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        img{
+            width: 45%;
+        }
+        div{
+            width: 50%;
+            h2{
+                margin-bottom: 40px;
+                font-size: 40px;
+                font-weight: 500;
+                letter-spacing: 3px;
+        
+
+            }
+            p{
+                letter-spacing: 3px;
+            }
+        }
+    }
+
 
     }
-}
 
-.dv3{
-    @include flex();
-    margin-top: 70px;
-    margin-bottom: 70px;
+    @media (max-width:1191px) and (min-width:960px) {
 
-    .titleText3{
-        margin-left: 100px;
-    h3{
-        margin-bottom: 40px;
-        font-size: 40px;
-        font-weight: 500;
-        letter-spacing: 3px;
+        .about{
+        .line_div{
+            
+
+            .line {
+                width: 40%;
+                height: 2px;
+                // background-color: black;
+            }
+
+                p{
+                    font-size: 20px;
+
+                }
+            
+        }
     }
-    p{
-        letter-spacing: 3px;
+      }
+      @media (max-width:960px) and (min-width:320px) {
+
+        .about{
+        .line_div{
+            
+            .line {
+                width: 40%;
+                height: 1px;
+                // background-color: black;
+            }
+
+                p{
+                    font-size: 12px;
+                    white-space: nowrap;
+                    width: 200px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            p:hover{
+                white-space: normal;
+                overflow: hidden;
+                width: 100%;
+            }
+        }
     }
-}
-}
-}
+      }
+
+      @media (max-width:768px){
+        .About_div{
+            flex-direction: column;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            img{
+                width: 45%;
+            }
+            div{
+                width: 50%;
+                h2{
+                    margin-bottom: 40px;
+                    font-size: 40px;
+                    font-weight: 500;
+                    // letter-spacing: 3px;
+            
+    
+                }
+                p{
+                    letter-spacing: 3px;
+                    white-space: nowrap;
+                    width: 200px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                p:hover{
+                    white-space: normal;
+                    overflow: hidden;
+                    width: 100%;
+                }
+            }
+        }
+        }
+      

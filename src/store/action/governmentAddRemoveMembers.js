@@ -1,9 +1,7 @@
-import axios from "axios";
+import adminaxios from "../../axios/adminaxios";
 import {  fetching, fetchSuccess, fetchError } from "../slice/GovernmetMembersFullInfo";
 
-const URL = process.env.REACT_APP_BASE_URL;
-
-export const uploadImage = (e,func)=>{
+export const uploadImage = (e)=>{
     return async (dispatch)=>{
         try{
             dispatch(fetching());
@@ -11,15 +9,10 @@ export const uploadImage = (e,func)=>{
                     formData.append('image', e);
                     if(formData.has('image')){
                     try {
-                        const response = await axios.post(`${URL}api/v1/superAdmin/upload`, formData, {
-                            headers: {
-                                'Content-Type': 'multipart/form-data'
-                            }
-                        });
+                        const response = await adminaxios.post('upload', formData);
                         dispatch(fetchSuccess(response.data?.dirname));
-                        // response?.data?.dirname && func()  
-                        
                     } catch (error) {
+                        console.log(error,"Server request is failed");
                         return "Server request is failed";
                     }}
             

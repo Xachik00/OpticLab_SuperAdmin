@@ -1,7 +1,8 @@
 
 import axios from "axios"
 import { useState } from "react";
-const URL = process.env.REACT_APP_BASE_URL;
+import "./PaymentSetings.scss"
+import { useraxios } from "../../axios/axios";
 
 
 export const PaymentSetings = () => {
@@ -29,9 +30,9 @@ export const PaymentSetings = () => {
     async function save() {
         try{
         
-          const response = await  axios({
+          const response = await  useraxios({
               method: 'PUT',
-              url: URL + 'api/v1/users/paymentMethods',
+              url: 'paymentMethods',
               data: pay
               
             });
@@ -48,22 +49,24 @@ export const PaymentSetings = () => {
     return (
         <div className='PaymentSetings'>
             <div className="Setings-payment">
-                <h3>Payment</h3>
+                <h1>Payment metod</h1>
                 <div>
-                    <input type="checkbox" onChange={()=>{addPay(1)}}/>
                     <span>PayPal</span>
+                    <input type="checkbox" onChange={()=>{addPay(1)}}/>
                 </div>
                 <div>
-                    <input type="checkbox" onChange={()=>{addPay(2)}}/>
                     <span>Stripe</span>
+                    <input type="checkbox" onChange={()=>{addPay(2)}}/>
                 </div>
                 <div>
-                    <input type="checkbox" onChange={()=>{addPay(3)}}/>
                     <span>Google Pay</span>
+                    <input type="checkbox" onChange={()=>{addPay(3)}}/>
                 </div>
                
-                <button onClick={()=>{save()}}>Save</button>
             </div>
+            <div
+        className='button-sayt'><button onClick={()=>{save()}}>Save</button></div>
+               
         </div>
     )
 }

@@ -7,12 +7,15 @@ import './setings.scss'
 import { CommiteSetings } from '../../components/commiteSetings'
 import { Style } from '../../components/StyleSettings'
 import { Modal } from '../../components/modal'
+import { CloseOutlined, SettingOutlined  } from "@ant-design/icons";
+
 
 export const Setings = () => {
     
     const [seenArr,setSeenArr]=useState(0);
     const kov:any = sessionStorage.getItem('setings');
     let [setings, setSetings] = useState(JSON.parse(kov)||1);
+    const[mobile, setMobile] = useState(false)
 
 
     useEffect(()=>{
@@ -51,7 +54,25 @@ export const Setings = () => {
     
     return (
         <div className='Setings'>
-            <div className='Setings-menu'>
+           
+           <div
+          className="headericone"
+          id="headericone"
+          onClick={() => setMobile(true)}
+        >
+          {!mobile && (
+            <div onClick={() => setMobile(true)}>
+              <SettingOutlined />
+            </div>
+          )}
+        </div>
+        
+        <div className={!mobile ? "items" : "items-mobile"}>
+        {mobile && (
+              <div className="closeHeader" id="closeHeader">
+                <CloseOutlined onClick={() => setMobile(!mobile)} />
+              </div>
+            )}
                 <h2>Setings</h2>
                 <ul>
                     <li className={setings === 1 ? 'activ' : ''} onClick={() =>  saveLocalStorage(1)}>Compony Setings <span></span></li>
@@ -62,7 +83,9 @@ export const Setings = () => {
                     <li className={setings === 6 ? 'activ' : ''} onClick={() =>  saveLocalStorage(6)}>Style Settings</li>
                     <li className={setings === 7 ? 'activ' : ''} onClick={() =>  saveLocalStorage(7)}>Add Admin</li>
                 </ul>
+                
             </div>
+
             {setings === 1 && <div className='Component-setings'><ComponySetings /></div>}
             {setings === 2 && <div className='Component-setings'><LoginSetings /></div>}
             {setings === 3 && <div className='Component-setings'><PaymentSetings /></div>}

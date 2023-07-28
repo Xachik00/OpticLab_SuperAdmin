@@ -7,6 +7,7 @@ import { EditOutlined, CheckOutlined,CloseOutlined } from "@ant-design/icons";
 import { fetchOrders } from "../../store/action/OrderInformationActions";
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 import { IOrders } from "../../models/model";
+import adminaxios from "../../axios/adminaxios";
 
 
 const URL = process.env.REACT_APP_BASE_URL;
@@ -103,9 +104,9 @@ const OrderingInformation = () => {
     }
 
 
-    const response = await axios({
+    const response = await adminaxios({
       method: "post",
-      url: `${URL}api/v1/superAdmin/changeColumnName`,
+      url: `changeColumnName`,
       data: obj,
     });
     setEdits("");

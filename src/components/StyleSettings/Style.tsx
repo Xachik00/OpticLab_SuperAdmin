@@ -1,12 +1,10 @@
 /*eslint-disabled */
-import React from 'react'
 import "./Style.scss";
-import axios from "axios";
 import { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 import { fetchLoginStyle } from "../../store/action/LoginStyleActions";
+import adminaxios from "../../axios/adminaxios";
 
-const URL = process.env.REACT_APP_BASE_URL
 
 export  function Style() {
     const { LoginStyle }:any = useAppSelector(state => state.LoginStyle);
@@ -21,7 +19,7 @@ export  function Style() {
       login_color: color,
       buttonBg_color: colorbtn
     }
-    await axios.put(URL + 'api/v1/superAdmin/changeLoginOptions', newColor)
+    await adminaxios.put('changeLoginOptions', newColor)
     dispatch(fetchLoginStyle())
   }
 
@@ -59,7 +57,7 @@ export  function Style() {
           registration_title: registration,
           remember_title: remember
         }
-        await axios.put(`${URL}api/v1/superAdmin/changeLoginOptions`, newText)
+        await adminaxios.put(`changeLoginOptions`, newText)
       }
 
 
@@ -67,7 +65,7 @@ export  function Style() {
         const newTitle = {
           title: text
         }
-        await axios.put(`${URL}api/v1/superAdmin/changeLoginOptions`, newTitle)
+        await adminaxios.put(`changeLoginOptions`, newTitle)
     
       }
 

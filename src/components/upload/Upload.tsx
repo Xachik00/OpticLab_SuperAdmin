@@ -6,7 +6,9 @@ export function Upload({name}:any) {
 
     const dispatch = useAppDispatch();
     const  uploadImageHandler  = async (e: any) => {
+        
         dispatch(uploadImage(e.target.files[0]));
+        console.log(e.target.files[0]);
     };
     
 
