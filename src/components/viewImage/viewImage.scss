@@ -6,24 +6,20 @@
     left: 0;
     z-index: 40;
     background-color: rgba(0, 0, 0, 0.596);
-
     .closeDiv {
         display: flex;
         justify-content: end;
         font-size: 50px;
         color: white;
         cursor: pointer;
-
         &:hover {
             color: gray;
         }
     }
-
     .imageDiv {
         display: flex;
         justify-content: space-between;
         align-items: center;
-
         span {
             width: 10%;
             min-height: 80vh;
@@ -33,12 +29,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
             &:hover {
                 background-color: gray;
             }
         }
-
         .imageviewdiv {
             img {
                 width: 100%;
@@ -47,11 +41,8 @@
         }
     }
 }
-
 @media(max-width:500px) {
     .ViewImage {
-
-
         span {
             font-size: 20px !important;
         }
