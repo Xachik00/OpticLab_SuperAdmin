@@ -1,12 +1,12 @@
-import { ComponySetings } from '../../components/componySetings'
-import { LoginSetings } from '../../components/loginSetings'
-import { PaymentSetings } from '../../components/paymentSetings'
-import { ShippingSetings } from '../../components/ShippingSetings'
-import { useEffect, useState } from 'react'
-import './setings.scss'
-import { CommiteSetings } from '../../components/commiteSetings'
-import { Style } from '../../components/StyleSettings'
-import { Modal } from '../../components/modal'
+import './setings.scss';
+import { useEffect, useState } from 'react';
+import { Modal } from '../../components/modal';
+import { Style } from '../../components/StyleSettings';
+import { LoginSetings } from '../../components/loginSetings';
+import { CommiteSetings } from '../../components/commiteSetings';
+import { ComponySetings } from '../../components/componySetings';
+import { PaymentSetings } from '../../components/paymentSetings';
+import { ShippingSetings } from '../../components/ShippingSetings';
 import { CloseOutlined, SettingOutlined  } from "@ant-design/icons";
 
 

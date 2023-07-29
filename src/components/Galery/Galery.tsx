@@ -6,15 +6,18 @@ import { fetchHome, fetchAddHome, deleteHome } from "../../store/action/HomeActi
 import { DeleteOutlined, FullscreenOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { RemoveItem } from "../removeItem";
+import { ViewImage } from "../viewImage";
 
 export function Galery() {
   const { image }: any = useAppSelector((state) => state.image);
   const { Home, loading }: any = useAppSelector((state) => state.Home)
   const dispatch = useAppDispatch();
-  const [add, setAdd] = useState(false);
   const navigate = useNavigate()
-  const [deletePage,setDeletePage]=useState(false)
+
   const [id,setId]=useState(0)
+  const [add, setAdd] = useState(false);
+  const [view, setView] = useState(-1);
+  const [deletePage,setDeletePage]=useState(false)
 
 
   useEffect(() => {
@@ -87,15 +90,15 @@ export function Galery() {
                 <img src={el.image} />
 
                 <div className="deleteviewDiv">
-                <FullscreenOutlined />
-                  <DeleteOutlined onClick={() =>{ setDeletePage(true);setId(el.id)}} className="deleteImages" >Delete</DeleteOutlined>
+                <FullscreenOutlined onClick={()=>setView(idx)}/>
+                  <DeleteOutlined onClick={() =>{ setDeletePage(true);setId(el.id)}} className="deleteImages" />
                   </div>
               </div>
             ))}
             <button className="uploadImage" onClick={() => setAdd(true)}><Upload name={'Galery'} /></button>
           </div>
         {deletePage&&<RemoveItem deleteItem={deleteImage} name={'Image'} setDeletePage={setDeletePage} id={id}/>}
-
+        {view!==-1&&<ViewImage id={view} imageArr={Home} setView={setView}/>}
       </div>}</>
   );
 }

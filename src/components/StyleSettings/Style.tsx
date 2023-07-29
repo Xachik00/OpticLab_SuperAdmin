@@ -13,15 +13,7 @@ export  function Style() {
   const [colorbtn, setColorbtn] = useState<any>()
   const [bgcolor, setBgColor] = useState<any>()
 
-  async function saveLocalstorage() {
-    const newColor = {
-      loginBg_color: bgcolor,
-      login_color: color,
-      buttonBg_color: colorbtn
-    }
-    await adminaxios.put('changeLoginOptions', newColor)
-    dispatch(fetchLoginStyle())
-  }
+
 
   const [signup, setSignup] = useState<any>('')
   const [login, setLogin] = useState<any>('')
@@ -47,6 +39,16 @@ export  function Style() {
     setRemember(LoginStyle?.remember_title)
     setLogin(LoginStyle?.login_title)
     }, [dispatch]);
+
+    async function saveLocalstorage() {
+      const newColor = {
+        loginBg_color: bgcolor,
+        login_color: color,
+        buttonBg_color: colorbtn
+      }
+      await adminaxios.put('changeLoginOptions', newColor)
+      dispatch(fetchLoginStyle())
+    }
 
     async function saveLocalstorageValue() {
         const newText = {

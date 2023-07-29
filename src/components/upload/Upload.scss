@@ -1,13 +1,19 @@
-.upp{
+.upp {
     // margin-left:30px ;
     width: auto;
     height: auto;
-label{
-//  font-size: 30px;
- color: white;
- display: flex;
- justify-content: center;
- align-items: center;
- background-color: gray;
-}
+
+    label {
+        //  font-size: 30px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(206, 202, 202);
+        cursor: pointer;
+        &:hover{
+            background-color: gray;
+            // color: black;
+        }
+    }
 }

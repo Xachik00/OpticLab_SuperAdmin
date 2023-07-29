@@ -1,0 +1,59 @@
+.ViewImage {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 40;
+    background-color: rgba(0, 0, 0, 0.596);
+
+    .closeDiv {
+        display: flex;
+        justify-content: end;
+        font-size: 50px;
+        color: white;
+        cursor: pointer;
+
+        &:hover {
+            color: gray;
+        }
+    }
+
+    .imageDiv {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        span {
+            width: 10%;
+            min-height: 80vh;
+            background-color: rgba(128, 128, 128, 0.362);
+            font-size: 100px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+                background-color: gray;
+            }
+        }
+
+        .imageviewdiv {
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
+
+@media(max-width:500px) {
+    .ViewImage {
+
+
+        span {
+            font-size: 20px !important;
+        }
+    }
+}
