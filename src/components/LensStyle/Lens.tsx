@@ -2,16 +2,17 @@ import { useState, useEffect } from "react";
 import "./Lens.scss";
 import { Color } from "../ColorStyles";
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
-import { fetchMirrorCoating } from "../../store/action/MirrorCoatingAction";
+import { fetchMirrorCoating ,editStyles} from "../../store/action/MirrorCoatingAction";
 import { fetchAntiReflectiveCoating } from "../../store/action/AntiReflectiveCoatingAction";
 import { EditOutlined, CloseOutlined, CheckSquareOutlined, DeleteOutlined } from "@ant-design/icons";
 import { Upload } from "../upload";
-
+import { useNavigate } from "react-router-dom";
 export default function Lens() {
 
   const { MirrorCoating } = useAppSelector(state => state.MirrorCoating);
   const { AntiReflectiveCoating } = useAppSelector(state => state.AntiReflectiveCoating)
   const dispatch = useAppDispatch()
+  const navigate=useNavigate()
   const [name, setName] = useState('Mirror Coating')
   const [name1, setName1] = useState('Anti-Reflective Coating')
   const [Show, setShow] = useState(false);
@@ -22,12 +23,24 @@ export default function Lens() {
   const [valueTitle1, setValueTitle1] = useState("");
   const [textareaInput, setTextareaInput] = useState("");
   const [textareaInput1, setTextareaInput1] = useState("");
+
+
+
   useEffect(() => {
     dispatch(fetchMirrorCoating(name));
     dispatch(fetchAntiReflectiveCoating(name1))
   }, [dispatch]);
   
-  
+  async function editText(id:number){
+    const newArr={
+      id,
+      title:valueTitle,
+      text:textareaInput
+    }
+    await dispatch(editStyles(newArr))
+    await dispatch(fetchMirrorCoating(name))
+    setShows(-1)
+  }
   return (
     <div className="lens">
       <div className="line_div">
@@ -42,8 +55,9 @@ export default function Lens() {
             <div key={el.id} className="contaDiv_edit">
               <input className="contaDiv_input" type="text" value={valueTitle} onChange={(e) => { setValueTitle(e.target.value) }} />
 
-              <textarea className="contaDiv_textarea"rows={53} cols={50} value={textareaInput} onChange={(e) => { setTextareaInput(e.target.value) }} />
-              <CheckSquareOutlined />
+              <textarea className="contaDiv_textarea"rows={12} cols={50} value={textareaInput} onChange={(e) => { setTextareaInput(e.target.value) }} />
+              <CheckSquareOutlined onClick={()=>{editText(el.id);
+              }}/>
               <CloseOutlined onClick={()=>setShows(-1)} />
             </div>
           ) : (

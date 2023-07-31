@@ -26,18 +26,11 @@ export const fetchMirrorCoating = (props:any) => {
     }
 }
 
-export const editStyles=({props,fetch}:any)=>{
+export const editStyles=(props:any)=>{
     return async (dispatch:Dispatch)=>{
         try{
-            
             dispatch(fetching1());
-            const response =await adminaxios.put('styles',props);            
-            const arr=[]
-            for(let key in response.data){
-                arr.push(response.data[key])
-            }
-            dispatch(fetch(arr));  
-             
+            await adminaxios.put('styles',props);                        
         }
         catch(error){
             

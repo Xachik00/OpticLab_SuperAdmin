@@ -14,7 +14,6 @@ export const fetchMirrorColors = (props:any) => {
                 arr.push(response.data[key])
             }
             dispatch(fetchSuccess3(arr));
-            console.log(arr);
             
             
         }

@@ -4,6 +4,7 @@ import { fetchMirrorCoating } from '../action/MirrorCoatingAction'
 interface IMirrorColors {
   created_at: string,
   id: number,
+  color: string | undefined,
   image: string | undefined,
   note: string | undefined,
   text: string,
