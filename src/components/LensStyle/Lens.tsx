@@ -14,13 +14,7 @@ export default function Lens() {
   const dispatch = useAppDispatch()
   const [name, setName] = useState('Mirror Coating')
   const [name1, setName1] = useState('Anti-Reflective Coating')
-  useEffect(() => {
-    dispatch(fetchMirrorCoating(name));
-    dispatch(fetchAntiReflectiveCoating(name1))
-  }, [dispatch]);
   const [Show, setShow] = useState(false);
-
-
   const [showEdit, setShowEdit] = useState('');
   const [shows, setShows] = useState(-1);
   const [showss, setShowss] = useState(-1);
@@ -28,52 +22,32 @@ export default function Lens() {
   const [valueTitle1, setValueTitle1] = useState("");
   const [textareaInput, setTextareaInput] = useState("");
   const [textareaInput1, setTextareaInput1] = useState("");
-
+  useEffect(() => {
+    dispatch(fetchMirrorCoating(name));
+    dispatch(fetchAntiReflectiveCoating(name1))
+  }, [dispatch]);
+  
+  
   return (
     <div className="lens">
       <div className="line_div">
         <div className="line"></div>
-        {showEdit === MirrorCoating[0]?.title_div ? (
-          <div className="text_divv">
-            <input className="line_input"
-              type="text"
-              onChange={(e) => {
-                setValueTitle(e.target.value);
-              }}
-              value={valueTitle}
-            />
-              <div className= "checkk" >
-              <CheckSquareOutlined onClick={() => setShowEdit(MirrorCoating[0].title_div)} />
-              <CloseOutlined onClick={()=>setShowEdit('')}/>
-
-            </div>
-          </div>
-        ) : (
-          <>
             <p>{MirrorCoating[0]?.title_div} </p>
-            <EditOutlined
-              onClick={() => {
-                setShowEdit(MirrorCoating[0]?.title_div);
-                setValueTitle(MirrorCoating[0]?.title_div);
-              }}
-            />
-          </>
-        )}
         <div className="line"></div>
       </div>
 
       <div className="contaDiv">
         {MirrorCoating.map((el) =>
           shows === el.id ? (
-            <>
+            <div key={el.id} className="contaDiv_edit">
               <input className="contaDiv_input" type="text" value={valueTitle} onChange={(e) => { setValueTitle(e.target.value) }} />
 
-              <textarea value={textareaInput} onChange={(e) => { setTextareaInput(e.target.value) }} />
+              <textarea className="contaDiv_textarea"rows={53} cols={50} value={textareaInput} onChange={(e) => { setTextareaInput(e.target.value) }} />
               <CheckSquareOutlined />
               <CloseOutlined onClick={()=>setShows(-1)} />
-            </>
+            </div>
           ) : (
-            <>
+            <div key={el.id}>
               <p className="titleP">{el.title}</p>
 
               <p className="texta">{el.text}</p>
@@ -85,7 +59,7 @@ export default function Lens() {
                 }}
               />
               <DeleteOutlined />
-            </>
+            </div>
           )
         )}
         <div className="butt">
@@ -95,7 +69,7 @@ export default function Lens() {
         </div>
         {Show && <Color />}
       </div>
-
+{/* 
       <div className="lens">
         <div className="line_div">
           <div className="line"></div>
@@ -116,7 +90,7 @@ export default function Lens() {
               </div>
             </div>
           ) : (
-            <>
+            < >
               <p>{AntiReflectiveCoating[0]?.title_div} </p>
               <EditOutlined
                 onClick={() => {
@@ -131,7 +105,7 @@ export default function Lens() {
 
         <div className="classBottomm">
           {AntiReflectiveCoating?.map((el, index) => (
-            <div className="classBottom">
+            <div className="classBottom" key={index}>
               {showss === el.id ?
 
                   <>
@@ -175,7 +149,7 @@ export default function Lens() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

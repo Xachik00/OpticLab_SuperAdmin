@@ -4,12 +4,14 @@ import { Upload } from '../upload';
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 import { fetchClip,fetchAddClip ,deleteClip,EditeClip} from "../../store/action/ClipAction";
 import { useNavigate } from 'react-router-dom';
-import { DeleteOutlined } from '@ant-design/icons';
+import { DeleteOutlined, FullscreenOutlined } from '@ant-design/icons';
 import { CheckSquareOutlined,CloseOutlined,EditOutlined } from '@ant-design/icons';
+import { RemoveItem } from '../removeItem';
+import { ViewImage } from '../viewImage';
 
 
 export function Clip() {
-  const {Clip}:any=useAppSelector(state=>state.Clip);
+  const {Clip,loading}:any=useAppSelector(state=>state.Clip);
   const idd:number = Clip[0]?.id;
   
   
@@ -18,7 +20,9 @@ export function Clip() {
   const dispatch = useAppDispatch()
   const name='Clip Styles'
   const [addimg, setAddimg] = useState(false)
-
+  const [view,setView]=useState(-1)
+  const [deletePage,setDeletePage]=useState(-1)
+  
 
   const [showEdit, setShowEdit] = useState('');
   const [valueTitle, setValueTitle] = useState<any>("");
@@ -38,9 +42,9 @@ useEffect(() => {
 }, [image,dispatch])
 
 
-function deleteImage() {
-  dispatch(deleteClip(name,idd))
-  // navigate(0)
+async function deleteImage() {
+  await dispatch(deleteClip(name,idd))
+  navigate(0)
 }
 
 function edite(){
@@ -77,73 +81,105 @@ function edite(){
   }, [resetTimeout, fun, Clip.length, setIndex, index]);
 
 
+  // return (
+  //   <div className='Clip'>
+  //     <div className='Clip_line_div'>
+  //       <div className='Clip_line'></div>
+  //       {showEdit === Clip[0]?.title_div ? (
+  //         <div className="text_divv">
+  //           <input className="line_input"
+  //             type="text"
+  //             onChange={(e) => {
+  //               setValueTitle(e.target.value);
+  //             }}
+  //             value={valueTitle}
+  //           />
+  //             <div className= "checkk" >
+  //             <CheckSquareOutlined onClick={() =>{ setShowEdit(Clip[0].title_div);
+  //               edite()
+  //             } 
+  //               }  />
+  //             <CloseOutlined onClick={()=>setShowEdit('')}/>
+
+  //           </div>
+  //         </div>
+  //       ) : (
+  //         <>
+  //           <p>{Clip[0]?.title_div} </p>
+  //           <EditOutlined
+  //             onClick={() => {
+  //               setShowEdit(Clip[0]?.title_div);
+  //               setValueTitle(Clip[0]?.title_div);
+  //             }}
+  //           />
+  //         </>
+  //       )}
+  //       </div>
+  //     <div
+  //       className="Clip_slideshow"
+  //     >
+  //       <div
+  //         className="Clip_slideshowSlider"
+  //         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+  //       >
+
+  //         {Clip.map((el:any, index:number) => (
+  //           <div className={index < index + 1 && index > index - 1 ? "Clip_activee" : "Clip_aslide"} key={index} onClick={() => {setIndex(index)}}>
+  //             {
+  //               <img src={el?.image} />
+  //             }
+  //           </div>
+  //         ))}
+
+  //       </div>
+  //       <div className='Clip_slideshowDots_111'>
+  //         <div className="Clip_slideshowDots">
+  //           {Clip.map((el:any, idx:number) => (
+  //             <div key={idx} className={`Clip_slideshowDot${index === idx ? " active" : ""}`} onClick={() => {setIndex(idx)}}> 
+  //               <img src={el.image} /> 
+  //               <DeleteOutlined onClick={() => deleteImage()} />  
+
+  //             </div>
+  //           ))}
+  //         </div>
+  //         <button onClick={()=>{setAddimg(true) }}>
+  //         <Upload name={'Clip'} />
+  //         </button>
+  //       </div>
+  //     </div>
+
+  //   </div>
+  // )
   return (
-    <div className='Clip'>
-      <div className='Clip_line_div'>
-        <div className='Clip_line'></div>
-        {showEdit === Clip[0]?.title_div ? (
-          <div className="text_divv">
-            <input className="line_input"
-              type="text"
-              onChange={(e) => {
-                setValueTitle(e.target.value);
-              }}
-              value={valueTitle}
-            />
-              <div className= "checkk" >
-              <CheckSquareOutlined onClick={() =>{ setShowEdit(Clip[0].title_div);
-                edite()
-              } 
-                }  />
-              <CloseOutlined onClick={()=>setShowEdit('')}/>
-
-            </div>
-          </div>
-        ) : (
-          <>
-            <p>{Clip[0]?.title_div} </p>
-            <EditOutlined
-              onClick={() => {
-                setShowEdit(Clip[0]?.title_div);
-                setValueTitle(Clip[0]?.title_div);
-              }}
-            />
-          </>
-        )}
+    <>{loading ? <div style={{ margin: '100px' }}>Loading</div> :
+      <div className="photoGalery ">
+        <div className="line_div">
+          <div className="line"></div>
+          <p>Clip Style</p>
+          <div className="line"></div>
         </div>
-      <div
-        className="Clip_slideshow"
-      >
-        <div
-          className="Clip_slideshowSlider"
-          style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
-        >
+          <div className="imageDiv">
+            {Clip?.map((el: any, idx: number) => (
+              <div
+                key={idx}
+                className='imagesItem'
+                onClick={() => {
+                  setIndex(idx);
+                }}
+              >
 
-          {Clip.map((el:any, index:number) => (
-            <div className={index < index + 1 && index > index - 1 ? "Clip_activee" : "Clip_aslide"} key={index} onClick={() => {setIndex(index)}}>
-              {
-                <img src={el?.image} />
-              }
-            </div>
-          ))}
+                <img src={el.image} />
 
-        </div>
-        <div className='Clip_slideshowDots_111'>
-          <div className="Clip_slideshowDots">
-            {Clip.map((el:any, idx:number) => (
-              <div key={idx} className={`Clip_slideshowDot${index === idx ? " active" : ""}`} onClick={() => {setIndex(idx)}}> 
-                <img src={el.image} /> 
-                <DeleteOutlined onClick={() => deleteImage()} />  
-
+                <div className="deleteviewDiv">
+                <FullscreenOutlined onClick={()=>setView(idx)}/>
+                  <DeleteOutlined onClick={() =>{ setDeletePage(el.id)}} className="deleteImages" />
+                  </div>
               </div>
             ))}
+            <button className="uploadImage" onClick={() => setAddimg(true)}><Upload name={'Clip'} /></button>
           </div>
-          <button onClick={()=>{setAddimg(true) }}>
-          <Upload name={'Clip'} />
-          </button>
-        </div>
-      </div>
-
-    </div>
-  )
+        {deletePage!==-1&&<RemoveItem deleteItem={deleteImage} name={'Image'} setDeletePage={setDeletePage} id={deletePage}/>}
+        {view!==-1&&<ViewImage id={view} imageArr={Clip} setView={setView}/>}
+      </div>}</>
+  );
 }
