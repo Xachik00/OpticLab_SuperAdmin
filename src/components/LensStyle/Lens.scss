@@ -2,6 +2,20 @@
     width: 1200px;
     margin: 0 auto;
 
+    span {
+        font-size: 20px;
+        padding: 10px;
+        margin: 10px;
+        cursor: pointer;
+        background-color: rgba(128, 128, 128, 0.575);
+        border-radius: 10px;
+
+        &:hover {
+            background-color: gray;
+            color: white;
+        }
+    }
+
     .line_div {
         width: 100%;
         margin: 100px auto 40px auto;
@@ -10,7 +24,7 @@
         align-items: center;
 
         .line {
-            width: 41%;
+            width: 34%;
             height: 2px;
             background-color: black;
         }
@@ -60,36 +74,298 @@
         }
 
         .contaDiv_edit {
-            .contaDiv_input {
-                width: 500px;
-                text-align: center;
-                box-shadow: 0 0 40px 10px gray;
-            }
-            .contaDiv_textarea{
+
+            textarea,
+            input {
                 width: 100%;
-                margin-top: 20px;
-                text-decoration: none;
-                text-align: start;
+                border-radius: 12px;
+                padding: 15px;
+                margin-top: 15px;
+                font-size: 16px;
+                box-shadow: 0 0 30px 10px gray;
+            }
+        }
+
+
+        .addMiror {
+            width: 100%;
+
+            textarea,
+            input {
+                width: 100%;
+                border-radius: 12px;
+                padding: 15px;
+                margin-top: 15px;
+                font-size: 16px;
+                box-shadow: 0 0 30px 10px gray;
+            }
+        }
+
+        .errorMiror {
+
+            textarea,
+            input {
+                box-shadow: 0 0 30px 5px red;
+            }
+        }
+
+    }
+
+    .classBottom {
+        margin-bottom: 70px;
+        width: 100%;
+
+        .editDiv {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            .divImage1{
+                display: flex;
+                width: 30%;
+                img{
+                    min-width: 100%;
+                }
+            }
+            .Lens_textaBottom{
+                width: 100%;
                 padding: 20px;
-                
-                box-shadow: 0 0 40px 10px gray;
+                .textaBottomTitle{
+                    font-weight: 900;
+                    margin-bottom: 10px;
+                }
             }
         }
 
-        span {
-            font-size: 20px;
-            padding: 10px;
-            margin: 10px;
-            cursor: pointer;
-            background-color: rgba(128, 128, 128, 0.575);
-            border-radius: 10px;
+    }
 
-            &:hover {
-                background-color: gray;
-                color: white;
+    .classBottom1 {
+        flex-direction: column !important;
+
+
+        .imageDivEdit {
+            width: 60% !important;
+            margin: 0 auto;
+
+            img {
+                width: 100%;
             }
         }
+
+        .aaa {
+            width: 100%;
+
+            textarea,
+            input {
+                width: 100% !important;
+                border-radius: 12px !important;
+                padding: 15px !important;
+                margin-top: 15px !important;
+                font-size: 16px !important;
+                box-shadow: 0 0 30px 10px gray !important;
+            }
+
+        }
+        @media (max-width: 1200px) {
+            .line_div {
+              p {
+                font-size: 18px !important;
+                margin: 0px 10px !important;
+              }
+            }
+          }
+        
+          @media (max-width: 960px) {
+            .line_div {
+              p {
+                font-size: 14px !important;
+                margin: 0px 8px !important;
+              }
+            }
+
+                p{
+                    font-size: 2px ;
+                }
+            
+          }
+        
+          @media (max-width: 770px) {
+            .line_div {
+              p {
+                font-size: 12px !important;
+                margin: 0px 6px !important;
+              }
+            }
+            
+            .contaDiv {
+              .titleP {
+                font-size: 16px !important;
+              }
+        
+              .texta {
+                font-size: 16px !important;
+              }
+        
+              .butt {
+                .submit {
+                  width: 150px !important;
+                }
+              }
+            }
+        
+            .editDiv {
+              .divImage1 {
+                img {
+                  width: 100% !important;
+                }
+              }
+            }
+            
+            .classBottom {
+              .editDiv {
+                .divImage1 {
+                  img {
+                    width: 100% !important;
+                  }
+                }
+              }
+            }
+          }
+        
+          @media (max-width: 500px) {
+            .line_div {
+              p {
+                font-size: 10px !important;
+                margin: 0px 2px !important;
+              }
+            }
+            
+            .contaDiv {
+              .titleP {
+                font-size: 14px !important;
+              }
+        
+              .texta {
+                font-size: 14px !important;
+                line-height: 28px !important;
+              }
+        
+              .butt {
+                .submit {
+                  width: 130px !important;
+                }
+              }
+            }
+        
+            .editDiv {
+              .divImage1 {
+                img {
+                  width: 100% !important;
+                }
+              }
+            }
+            
+            .classBottom {
+              .editDiv {
+                .divImage1 {
+                  img {
+                    width: 100% !important;
+                  }
+                }
+              }
+            }
+          }
+        
 
 
     }
+    .addMiror {
+        width: 100%;
+        text-align: center;
+        img{
+            width: 50%;
+            margin-bottom: 20px;
+        }
+        textarea,
+        input {
+            width: 100%;
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+            font-size: 16px;
+            box-shadow: 0 0 30px 10px gray;
+        }
+    }
+
+    .errorMiror {
+
+        textarea,
+        input {
+            box-shadow: 0 0 30px 5px red;
+        }
+    }
 }
+
+@media (max-width:1200px) {
+    .lens {
+        width: 100%;
+    }
+}
+
+
+@media (max-width:960px){
+    .line_div{
+        p{
+            font-size: 18px !important ;
+            margin: 0px 10px !important ;
+        }
+    }
+    p{
+        font-size: 16px !important;
+    }
+}
+
+@media (max-width:770px) {
+    .line_div{
+        p{
+            font-size: 12px !important ;
+            margin: 0px 8px !important ;
+        }
+    }
+    
+    .editDiv{
+        display: block !important;
+        width: 100% !important;
+        text-align: center;
+        .divImage1{
+            width: 100% !important;
+        
+        img{
+            width: 100% !important;
+        }
+    }}
+    .classBottom {
+        flex-direction: column;
+
+        
+
+    }
+    p{
+        font-size: 14px !important;
+    }
+
+
+}
+
+@media (max-width:500px){
+    .line_div{
+        p{
+            font-size: 10px !important ;
+            margin: 0px 2px !important ;
+        }
+    }
+
+    p{
+        font-size: 12px !important;
+    }
+}
+

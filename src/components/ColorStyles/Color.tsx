@@ -7,13 +7,12 @@ import { fetchMirrorColors } from "../../store/action/MirrorColorsAction";
 import adminaxios from "../../axios/adminaxios";
 
 interface IEditValue  {
-  id: number | undefined,
-  title_div: string | undefined,
-  title: string | undefined ,
-  text: string | undefined ,
+  id?: number | undefined,
+  title_div?: string | undefined,
+  title?: string | undefined ,
+  text?: string | undefined ,
   color?: string | undefined ,
-  note:string | null | any,
-
+  note?:string | null | any,
 }
 
 
@@ -23,7 +22,6 @@ export function Color() {
   const { image } = useAppSelector(state => state.image)
   const dispatch = useAppDispatch()
   const name='Mirror Colors'
-  console.log(MirrorColors);
   
   useEffect(() => {
     dispatch(fetchMirrorColors(name));
@@ -41,20 +39,27 @@ export function Color() {
   }, [dispatch]);
 
 
+  async function changeNote(){
+    MirrorColors.map(async(el)=>{
+      let newNote={
+        id:el.id,
+        ...textValue
+      }
+     await adminaxios.put(`styles`,newNote);
+     await dispatch(fetchMirrorColors(name));
+    })
+
+  }
+
   async function changeColor(){
     try{
-      console.log(editValue);
-      const response = await adminaxios.put(`styles`,editValue);
-
-      setShowss(-1);
+      await adminaxios.put("styles",editValue);
       await dispatch(fetchMirrorColors(name))
-      
-    }
-    catch(error){
+      setShowss(-1);
+    }catch(error){
       console.log(error);
       
     }
-
   }
 
   return (
@@ -73,7 +78,7 @@ export function Color() {
           <div key={index} className="gridik">
             {showss === index ? 
                 <div key={el.id} className='color_div'>
-                  <input type="color" value={editValue?.color} onChange={(e)=>setEditValue({
+                  <div className="color_input"><input type="color" value={editValue?.color} onChange={(e)=>setEditValue({
                       id:editValue?.id,
                       title_div:editValue?.title_div,
                       title:editValue?.title,
@@ -81,7 +86,7 @@ export function Color() {
                       color:e.target.value,
                       note:editValue?.note,
 
-                    })} style={{height:'200px',width:'200px'}}/>
+                    })}/></div>
                   <div className='color_div_image'>
                     {/* <img src={el.image} /> */}
                     <input type="text"  value={editValue?.title} onChange={(e)=> setEditValue({
@@ -138,22 +143,24 @@ export function Color() {
         {shows ? (
           <>
             <textarea
-              value={textValue}
-              onChange={(e) => {
-                setTextValue(e.target.value);
-              }}
+            cols={30}
+            rows={10}
+              value={textValue?.note}
+              onChange={(e)=> setTextValue({note:e.target.value})}
+
             />
-            <CheckSquareOutlined />
+            <CheckSquareOutlined onClick={()=>{changeNote(); setShows(!shows);console.log(editValue)}} />
+            <CloseOutlined onClick={()=>setShows(!shows)} />
           </>
         ) : (
           <>
             <li>{MirrorColors[0]?.note}</li>
 
             <EditOutlined
-              onClick={() => {
-                setShows(!shows);
-                setTextValue(MirrorColors[0]?.note);
-              }}
+              onClick={() => {setShows(!shows);setTextValue({
+                note:MirrorColors[0]?.note,
+
+              })}} 
             />
           </>
         )}

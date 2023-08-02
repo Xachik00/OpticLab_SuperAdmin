@@ -1,6 +1,7 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import axios from "../../axios/axios";
 import {  fetching2, fetchSuccess2, fetchError2 } from "../slice/AntiReflectiveCoatingSlice";
+import adminaxios from "../../axios/adminaxios";
 
 
 export const fetchAntiReflectiveCoating = (props:any) => {
@@ -24,3 +25,4 @@ export const fetchAntiReflectiveCoating = (props:any) => {
 
     }
 }
+

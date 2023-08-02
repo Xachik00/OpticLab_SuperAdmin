@@ -39,4 +39,31 @@ export const editStyles=(props:any)=>{
 
     }
 }
+export const addStyles=(props:any)=>{
+    return async (dispatch:Dispatch)=>{
+        try{
+            dispatch(fetching1());
+            await adminaxios.post('styles/add',props);                        
+        }
+        catch(error){
+            
+            dispatch(fetchError1(error as Error));
+        }
+
+    }
+}
+export const deleteMiror=(id:number)=>{
+    return async (dispatch:Dispatch)=>{
+        try{
+            dispatch(fetching1());
+            await adminaxios.delete(`styles/${id}`);                        
+        }
+        catch(error){
+            
+            dispatch(fetchError1(error as Error));
+        }
+
+    }
+}
+
 

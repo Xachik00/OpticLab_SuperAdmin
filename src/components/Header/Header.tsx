@@ -52,11 +52,11 @@ let local:string | any =JSON.parse(loc) ;
                 </div>
 
                 <div className={mobile? "items":  "items-mobile"} >
-                    <div style={{ color: LoginStyle.login_color }}  className={window.location.href==process.env.REACT_APP_BASE_URL+'home'?"itemHome item activ":"itemHome item"} onClick={()=>{navigate("/home")}} >HOME</div>
-                    <div style={{ color: LoginStyle.login_color }} className={window.location.href==process.env.REACT_APP_BASE_URL+'about'?"itemAbout item activ":"itemAbout item"}  onClick={()=>{navigate("/about")}} >ABOUT US</div>
-                    <div style={{ color: LoginStyle.login_color }} className={window.location.href==process.env.REACT_APP_BASE_URL+'ClipandLendStyles'?"itemStiles item activ":"itemStiles item"}  onClick={()=>{navigate("/ClipandLendStyles")}} > CLIP AND LEND STYLES </div>
-                    <div style={{ color: LoginStyle.login_color }} className={window.location.href==process.env.REACT_APP_BASE_URL+'orderinginformation'?"itemStiles item activ":"itemStiles item"}  onClick={()=>{navigate("/orderinginformation")}} > ORDER ITEM </div>
-                    <div style={{ color: LoginStyle.login_color }} className={window.location.href==process.env.REACT_APP_BASE_URL?"itemStiles item activ":"itemStiles item"}  onClick={()=>{navigate("/")}} > SETTINGS </div>
+                    <div style={{ color: LoginStyle.login_color }}  className={window.location.href==process.env.REACT_APP_BASE_URL+'home'?"itemHome item activ":"itemHome item"} onClick={()=>{setMobile(!mobile);navigate("/home")}} >HOME</div>
+                    <div style={{ color: LoginStyle.login_color }} className={window.location.href==process.env.REACT_APP_BASE_URL+'about'?"itemAbout item activ":"itemAbout item"}  onClick={()=>{setMobile(!mobile);navigate("/about")}} >ABOUT US</div>
+                    <div style={{ color: LoginStyle.login_color }} className={window.location.href==process.env.REACT_APP_BASE_URL+'ClipandLendStyles'?"itemStiles item activ":"itemStiles item"}  onClick={()=>{setMobile(!mobile);navigate("/ClipandLendStyles")}} > CLIP AND LEND STYLES </div>
+                    <div style={{ color: LoginStyle.login_color }} className={window.location.href==process.env.REACT_APP_BASE_URL+'orderinginformation'?"itemStiles item activ":"itemStiles item"}  onClick={()=>{setMobile(!mobile);navigate("/orderinginformation")}} > ORDER ITEM </div>
+                    <div style={{ color: LoginStyle.login_color }} className={window.location.href==process.env.REACT_APP_BASE_URL?"itemStiles item activ":"itemStiles item"}  onClick={()=>{setMobile(!mobile);navigate("/")}} > SETTINGS </div>
                     {!mobile&&<div className="sasas" id="sasas" onClick={()=>setMobile(!mobile)}><CloseOutlined/></div>}
                 </div>
                 <div className="button" >
