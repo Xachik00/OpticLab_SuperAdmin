@@ -12,6 +12,7 @@ import ordersReducer from "./slice/OrderInformationSlice";
 import MessigeReducer from "./slice/MessigeSlice";
 import ClipReducer from "./slice/ClipSlice";
 import AboutReducer from "./slice/AboutSlice";
+import CompanyReducer from './slice/CompanySlice'
 
 
 export const store = configureStore({
@@ -29,6 +30,7 @@ export const store = configureStore({
     Messige: MessigeReducer,
     Clip: ClipReducer,
     About:AboutReducer,
+    Company:CompanyReducer,
   }
 })
 
