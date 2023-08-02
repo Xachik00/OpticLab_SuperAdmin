@@ -9,7 +9,45 @@
     margin: 0 auto;
     margin-top: 100px;
     margin-bottom: 100px;
+    .addbtn{
+        display: flex;
+        justify-content: center;
+        width: 15%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 15px;
+        background-color: rgb(44, 48, 52);
+        color: azure;
+        cursor: pointer;
+    }
+    .addItem{
+        width: 50%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+        label{
+            margin-bottom: 10px;
+            font-size: 20px;
 
+        }
+       input{
+        width: 100%;
+        border:1px solid rgb(44, 48, 52); 
+       }
+        input[type=submit]{
+            width: 40%;
+            padding: 10px;
+            background: rgb(44, 48, 52);
+            font-size:16px;
+            border-radius: 15px;
+            color: azure;
+            margin: 0 auto;
+            cursor: pointer;
+
+        }
+    }
     .line_div {
         width: 100%;
         margin: 40px auto;
@@ -34,25 +72,71 @@
     .About_div{
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         margin-top: 40px;
-        img{
-            width: 45%;
-        }
-        div{
-            width: 50%;
-            h2{
-                margin-bottom: 40px;
-                font-size: 40px;
-                font-weight: 500;
-                letter-spacing: 3px;
-        
+        .About_box{
+            width: 100%;
+            .div_box{ 
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                .edit_img{
+                    width: 45%;
+                    height: auto;
+                    span{display:none}
+                   img{
+                    width: 100%;
+                   }
+                }
+                .edit_img:hover{
+                
+                    span{display:block;
 
+                    position: absolute;
+                    top:50%;
+                    left: 30%;
+                    font-size: 25px;
+                    color: rgb(9, 6, 1);
+                    font-weight: 700;
+                    }
+
+                }
+                .textarea{
+                    
+                        border-radius: 0;
+                        resize: none;
+                    
+                }
+
+                img{
+                    width: 45%;
+                }
+               
+                div{
+                width: 50%;
+                flex-direction: column;
+                h2{
+                    margin-bottom: 40px;
+                    font-size: 40px;
+                    font-weight: 500;
+                    letter-spacing: 3px;
+            
+    
+                }
+                p{
+                    letter-spacing: 3px;
+                }
             }
-            p{
-                letter-spacing: 3px;
             }
         }
+        .About_edit{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            border-bottom: 2px solid rgb(191, 237, 191);
+        }
+       
     }
 
 
@@ -110,35 +194,55 @@
             flex-direction: column;
             width: 100%;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
             margin-top: 40px;
-            img{
-                width: 45%;
-            }
-            div{
-                width: 50%;
-                h2{
-                    margin-bottom: 40px;
-                    font-size: 40px;
-                    font-weight: 500;
-                    // letter-spacing: 3px;
-            
-    
+            .About_box{
+                .div_box{ 
+                    display: flex;
+                    flex-direction: column;
+                    margin: 0 auto;
+                    img{
+                        width: 60% !important;
+                        margin: 0 auto;
+                    }
+                    div{
+                    width: 70% !important;
+                    flex-direction: column;
+                    margin: 0 auto;
+
+                    h2{
+                        margin-bottom: 40px;
+                        font-size: 40px;
+                        font-weight: 500;
+                        letter-spacing: 3px;
+                
+        
+                    }
+                    p{
+                        letter-spacing: 3px;
+                        white-space: nowrap;
+                        width: 200px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                    p:hover{
+                        white-space: normal;
+                        overflow: hidden;
+                        width: 100%;
+                    }
                 }
-                p{
-                    letter-spacing: 3px;
-                    white-space: nowrap;
-                    width: 200px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
                 }
-                p:hover{
-                    white-space: normal;
-                    overflow: hidden;
+                .About_edit{
                     width: 100%;
+                    display: flex !important;
+                    justify-content: space-around !important;
+                    padding: 20px;
+                    border-bottom: 2px solid rgb(191, 237, 191);
                 }
             }
+               
+            }
         }
-        }
+        
       

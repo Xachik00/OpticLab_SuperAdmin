@@ -5,39 +5,81 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
-        div{
-            width: 100%;
+        .addbtn{
             display: flex;
-            // justify-content: center;
-            justify-content: space-between  ;
-            align-items: center;
-            // position: relative;
-            p{
-                width: 200px;
-                height: 70px;
-                background-color: rgba(128, 128, 128, 0.803);
-                color: white;
-                font-size: 25px;
-                position: absolute;
-                // left: 350px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                opacity: 0;
-                // text-align: center;
-            }
-            &:hover {
-                p{
-                    opacity: 1;
+            justify-content: center;
+            width: 15%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 15px;
+            background-color: rgb(44, 48, 52);
+            color: azure;
+            cursor: pointer;
+            border-radius: 0px 0px 20px 20px;
+        }
+        .addItem{
+            width: 50%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            label{
+                margin-bottom: 10px;
+                font-size: 20px;
     
-                }
             }
-            input{
-                border: 2px solid ;
-                width: 50%
+           input{
+            width: 100%;
+            border:1px solid rgb(44, 48, 52); 
+           }
+            input[type=submit]{
+                width: 40%;
+                padding: 10px;
+                background: rgb(44, 48, 52);
+                font-size:16px;
+                border-radius: 15px;
+                color: azure;
+                margin: 20px auto;
+                cursor: pointer;
+    
             }
         }
+       .box{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid black;
+        .info_box{
+            width: 90%;
+            display: flex;
+            justify-content: space-between  ;
+            align-items: center;
+            .edit_img{
+                img{width: 90px;}
+            }
+            // position: relative;
+            span{
+               
+                color: black;
+                font-size: 15px;
+                display: flex;
+               
+            }
+           
+            .changeInput{
+                border: 2px solid ;
+                // width: 50%
+            }
+        }
+
+        .About_edit{
+            width: 80px;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }}
     }
     .button-sayt{
         display: flex;
