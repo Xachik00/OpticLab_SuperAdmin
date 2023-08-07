@@ -55,7 +55,6 @@ export const EditeClip = (id:number,edit:string) => {
                 title_div:edit,
             }
             const response =  await adminaxios.put('styles',ed);       
-            console.log(response.data)
            fetchClip(response.data);
         }
     
@@ -67,7 +66,6 @@ export const deleteClip = (name:string,id:number) => {
     return async ()=>{
         try{     
            const response =  await adminaxios.delete(`styles/${id}`);
-           console.log(response);
            fetchClip(name)
 
         }

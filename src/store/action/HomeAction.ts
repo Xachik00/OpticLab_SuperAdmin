@@ -11,7 +11,6 @@ export const fetchHome = () => {
             dispatch(fetching4());
             const response =await axios.get('home');            
             const arr=[]
-            console.log(response);
             
             for(let key in response.data){
                 arr.push(response.data[key])
@@ -33,7 +32,6 @@ export const fetchAddHome = (props:string) => {
             const newImage={
                 image:props
             }
-            console.log(newImage);
             
             await axiosadmin.post('home/add',newImage);     
              fetchHome()
@@ -53,7 +51,6 @@ export const deleteHome = (id:number) => {
     return async ()=>{
         try{
             const res=await axiosadmin.delete(`home/${id}`);
-            console.log(res);
             
             fetchHome()
         }

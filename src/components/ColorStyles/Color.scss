@@ -32,11 +32,9 @@
     text-align: center;
     .gridContainer {
         display: grid;
-        // grid-template-columns: minmax(repeat(100px, 1fr)) ;
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 30px;
         margin: 0 auto !important;
-        // grid-template-rows: auto auto auto;
         .color_div {
             margin-top: 40px;
             align-items: center;

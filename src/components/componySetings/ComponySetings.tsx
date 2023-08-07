@@ -10,7 +10,6 @@ import { Upload } from '../../components/upload'
 export const ComponySetings = () => {
   const { image }: any = useAppSelector((state) => state.image);
    const [images,setImages]=useState(image)
-console.log(image,1111111);
 
     const { Company } = useAppSelector(state => state.Company)
   const dispatch = useAppDispatch()
@@ -23,13 +22,11 @@ console.log(image,1111111);
   useEffect(()=>{
     setItemChange(image)
     setImages(image)
-    console.log(itemChange,222);
     
   },[image])
     useEffect(() => {
         dispatch(fetchCompany())
       }, [dispatch])
-      console.log(Company);
  
       async function Edit(el:any) {
         try {
@@ -46,7 +43,6 @@ console.log(image,1111111);
       }
 
       async function deletes(id: any) {
-console.log(id);
 
         try {
           const response = await axios.delete(`deleteCompanySettings/${id}`, {

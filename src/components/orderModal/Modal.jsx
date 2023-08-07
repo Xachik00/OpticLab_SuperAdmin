@@ -111,7 +111,6 @@ export default function Modal({ active, setActive }) {
           data: [depName, price ? { columnName: item } : { columnName: item }, price, price1]
         });
 
-   console.log(response);
         setSuccess(true);
         setDepName("");
         setItem("");

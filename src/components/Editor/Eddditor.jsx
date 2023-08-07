@@ -2,15 +2,18 @@ import { useState, useRef,} from "react";
 import JoditEditor from "jodit-react";
 import "./Editor.scss";
 import { useNavigate } from "react-router-dom";
+import { fetchEditThemes } from "../../store/action/ThemesAction";
+import { useAppDispatch } from "../../hooks/redux";
 
 
-export  function Eddditor({setEdit}) {
+export  function Eddditor({setEdit,value}) {
  
  
   const navigate=useNavigate()
   const editor = useRef(null);
+  const dispatch=useAppDispatch()
   
-  const [content, setContent] = useState(localStorage.getItem('editor')||"Start writing");
+  const [content, setContent] = useState(value);
   const config = {
     readonly: false,
     height: 'auto'
@@ -19,24 +22,23 @@ export  function Eddditor({setEdit}) {
     setContent(event);
   };
 
-  const handleclick = (e) => {
-
-    localStorage.removeItem('editor')
-    localStorage.setItem('editor',content)
-    console.log(content);
-    setContent(e);
+  const handleclick =async (e) => {
+    const newContent={
+      text:content
+    };
+    await dispatch(fetchEditThemes(newContent))
+    setContent(e)
+    setEdit(false)
   }
   return (
     <div className="App">
-      <h1>React Editors</h1>
-      <h2>Start editing to see some magic happen!</h2>
       <JoditEditor
         ref={editor}
         value={content}
         config={config}
         onBlur={handleUpdate}
       />
-      <div className="saveButton btn " onClick={()=> {handleclick();navigate(0)}} > <button>Save</button></div>
+      <div className="saveButton btn " onClick={()=> {handleclick()}} > <button>Save</button></div>
     </div>
     
   );

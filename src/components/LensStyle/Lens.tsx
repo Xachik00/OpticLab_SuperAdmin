@@ -71,13 +71,11 @@ export default function Lens() {
     } else {
       if (!addValue?.title || !addValue?.text) {
         setErrorValue(true)
-        console.log(addAnti);
       } else {
         const newMiror = {
           title_div: name,
           ...addValue
         }
-        console.log(addAnti);
 
         await dispatch(addStyles(newMiror))
         await dispatch(fetchMirrorCoating(name))

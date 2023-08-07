@@ -21,7 +21,6 @@ export function About() {
   useEffect(() => {
     dispatch(fetchAbout(name))
   }, [dispatch, name])
-console.log(About);
 
   async function Edit(title_div: any) {
 
