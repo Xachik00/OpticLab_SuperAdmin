@@ -14,16 +14,15 @@ export const Setings = () => {
     
     const [seenArr,setSeenArr]=useState(0);
     const kov:any = sessionStorage.getItem('setings');
-    let [setings, setSetings] = useState(JSON.parse(kov)||1);
+    let [setings, setSetings] = useState(1);
     const[mobile, setMobile] = useState(false)
 
 
     useEffect(()=>{
-        if(kov === undefined){  
+        if(kov === undefined || kov === null){  
             let setString:string = JSON.stringify(setings);
-            let sett:any = sessionStorage.setItem("setings",setString);
-            let setParse = JSON.parse(sett);
-            setSetings(setParse);
+            sessionStorage.setItem("setings",setString);
+            setSetings(JSON.parse(setString));
     
         }else{
             setSetings(JSON.parse(kov))
@@ -32,8 +31,9 @@ export const Setings = () => {
         const seen:any=sessionStorage.getItem('seenArr')
         setSeenArr(JSON.parse(seen))
     
-
-    },[])
+        console.log(kov);
+        
+    },[kov])
 
     let valueStorage:any = sessionStorage.getItem("setings");
     let value = JSON.parse(valueStorage);

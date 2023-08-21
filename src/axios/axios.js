@@ -6,5 +6,5 @@ export default axios.create({
     baseURL: BASE_URL
 });
 export const useraxios = axios.create({
-    baseURL: `${URL}api/v1/user`
+    baseURL: `${URL}api/v1/users`
 });

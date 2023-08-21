@@ -1,18 +1,80 @@
-.style{
-  margin-bottom:500px;
-}
+// .style{
+//   margin-bottom:500px;
+// }
 
-#txtt{
+// #txtt{
+//     display: flex;
+//     justify-content: center;
+//     flex-direction: column;
+//     // margin-left:1420px ;
+//     input{
+//       border: 2px solid gray ;
+//       width: 300px;
+//     }
+
+    
+    
+//   }
+
+//   #containerHeaderH11{
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+
+
+// }
+
+// #buttonId{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+   
+//     margin: 0 auto;
+// }
+
+// #inputId{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     margin: 0 auto;
+// }
+
+// #inputButtonId{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     margin: 0 auto; 
+//     width: 100px;
+//     height: 40px;  
+// }
+.style{
+  margin: 0 auto;
+  text-align: center;
+ #txtt{
     display: flex;
     justify-content: center;
     flex-direction: column;
     // margin-left:1420px ;
-    input{
-      border: 2px solid gray ;
-      width: 300px;
-    }
+    
+  #inputId{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    padding: 15px;
+    border:1px solid black
+}
 
     
+#inputButtonId{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto; 
+  width: 100px;
+  height: 40px;  
+}
     
   }
 
@@ -22,29 +84,53 @@
     justify-content: center;
     align-items: center;
 
+ 
 
 }
 
 #buttonId{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
-    margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ padding: 10px 20px;
+  margin: 10px auto;
 }
 
-#inputId{
+  .setings-div{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-}
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+      width: 100%;
+    .setings{
+      padding: 20px;
+      div{
+        padding: 5px;
+        border-bottom: 1px solid black;
+      }
+      button{
+        margin-top: 20px;
+      }
+    }
+    .setings-text{
+      display: flex;
+      flex-wrap: wrap;
+      margin: 20px auto;
+      justify-content: space-around;
+      width: 40%;
+      input{
+     height: 40px;
+      width: 200px;
+      margin-bottom: 20px;
+      }
+      button{
+        margin-top: 20px;
+      }
 
-#inputButtonId{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto; 
-    width: 100px;
-    height: 40px;  
+      // grid-template-columns: repeat(2, 200px);
+
+      // gap: 20px;
+                    // margin: 0px auto;
+    }
+  }
 }
