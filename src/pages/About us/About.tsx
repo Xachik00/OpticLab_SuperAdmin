@@ -7,6 +7,7 @@ import TextArea from "antd/es/input/TextArea";
 import axios from '../../axios/adminaxios'
 import { Upload } from '../../components/upload'
 import { uploadImage } from '../../store/action/governmentAddRemoveMembers'
+import adminaxios from "../../axios/adminaxios";
 export function About() {
 
   const { About } = useAppSelector(state => state.About)
@@ -26,7 +27,7 @@ export function About() {
 
     try {
       if (image) {
-        const response = await axios.put('about', {
+        const response = await adminaxios.put('about', {
           id: edite,
           title_div: title_div,
           title: title,
@@ -35,7 +36,7 @@ export function About() {
 
         }); setEdite(false)
       } else {
-        const response = await axios.put('about', {
+        const response = await adminaxios.put('about', {
           id: edite,
           title_div: title_div,
           title: title,

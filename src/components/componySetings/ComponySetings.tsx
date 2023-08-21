@@ -6,6 +6,7 @@ import { imageSlice } from '../../store/slice/GovernmetMembersFullInfo';
 import { EditOutlined, CloseOutlined, CheckSquareOutlined, DeleteOutlined } from "@ant-design/icons";
 import axios from '../../axios/adminaxios'
 import { Upload } from '../../components/upload'
+import adminaxios from '../../axios/adminaxios';
 
 export const ComponySetings = () => {
   const { image }: any = useAppSelector((state) => state.image);
@@ -30,7 +31,7 @@ export const ComponySetings = () => {
  
       async function Edit(el:any) {
         try {
-              const response = await axios.put('changeCompanySettings', {
+              const response = await adminaxios.put('changeCompanySettings', {
               [el]:itemChange,
             }); 
           
@@ -45,7 +46,7 @@ export const ComponySetings = () => {
       async function deletes(id: any) {
 
         try {
-          const response = await axios.delete(`deleteCompanySettings/${id}`, {
+          const response = await adminaxios.delete(`deleteCompanySettings/${id}`, {
     
           });
           
@@ -61,7 +62,7 @@ export const ComponySetings = () => {
         e.preventDefault()
     
         try {
-          const response = await axios.post('addCompanySettings', {
+          const response = await adminaxios.post('addCompanySettings', {
          [title]:text,
            
           });

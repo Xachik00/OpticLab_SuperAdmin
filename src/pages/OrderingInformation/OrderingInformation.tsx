@@ -113,7 +113,7 @@ const OrderingInformation = () => {
   }
 
   async function deletes(table: any, item: string) {
-    const response = await axios({
+    const response = await adminaxios({
       method: "delete",
       url: `${URL}api/v1/superAdmin/dropColumn`,
       data: { tableName: table, columnName: item },
@@ -161,6 +161,8 @@ const OrderingInformation = () => {
                 </div>
                 <form onSubmit={handleSubmit}>
                   {orders?.length>0 && orders?.map((item: any) => {
+                    console.log(item);
+                    
                     if (item.table_name === el)
                       return (
                         <div key={item.id} className="form">
@@ -227,8 +229,8 @@ const OrderingInformation = () => {
                                       e.target.checked
                                     );
                                   }}
-                                />{" "}
-                                <img src={`${item.value}`} />
+                                />
+                                <img src={item.value} />
                               </>
                             ) : item.price_company ? (
                               <input

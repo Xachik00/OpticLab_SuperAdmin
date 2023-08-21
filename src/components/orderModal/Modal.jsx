@@ -6,6 +6,7 @@ import axios from "axios";
 import { fetchOrders } from '../../store/action/OrderInformationActions';
 import { useAppDispatch } from '../../hooks/redux';
 import  axiosadmin  from '../../axios/adminaxios';
+import adminaxios from '../../axios/adminaxios';
 const URL = process.env.REACT_APP_BASE_URL;
 
 export default function Modal({ active, setActive }) {
@@ -23,7 +24,7 @@ export default function Modal({ active, setActive }) {
   const [preview, setPreview] = useState();
   const fileInputRef = useRef();
   const dispatch = useAppDispatch()
-
+  console.log(img);
   useEffect(() => {
     if (image) {
       const reader = new FileReader();
@@ -38,18 +39,20 @@ export default function Modal({ active, setActive }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       if (price === '' || price1 === '') {
         if (price === '' && price1 === '' && img !== "") {
-
+          console.log(depName);
+          console.log(item);
+                      
           const response = await axiosadmin({
-            method: 'post',
+            method: 'POST',
             url: 'addTable',
             data: [depName, { columnName: item }, { value: img }]
-
+            
           });
-          
+
+        
           
           setSuccess(true);
           //clear state and controlled inputs
@@ -189,12 +192,12 @@ export default function Modal({ active, setActive }) {
                       let files = new FormData();
                       files.append("image", file);
                       if (files.has("image")) {
-                        const response = await axios({
+                        const response = await adminaxios({
                           method: "post",
                           url: `${URL}api/v1/superAdmin/upload`,
                           data: files,
                         });
-                        let photo = response.data.filename;
+                        let photo = response?.data?.dirname;
                         setImg(photo);
                       } else {
                         console.log(
