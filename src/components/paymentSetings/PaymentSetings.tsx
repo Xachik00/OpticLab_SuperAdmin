@@ -1,6 +1,6 @@
 
 import axios from "axios"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./PaymentSetings.scss"
 import { useraxios } from "../../axios/axios";
 
@@ -9,8 +9,29 @@ export const PaymentSetings = () => {
 
 
     const [pay,setPay]=useState<any>([])
+    const [payment,setPayment] = useState<Object[]>()
+    async function name() {
+        console.log(111);
+        
+        const response = await useraxios.get('paymentMethods');
+        setPayment(response.data)
+      }
+      useEffect(()=>{
 
-    async function addPay(n:any){
+          name()
+    },[])
+    console.log(payment);
+    
+   function addPay(n:any){
+         
+  let newPay:any = payment?.map((el:any)=>{
+    if(el.id === n ){
+      el={...el, status:!el.status}
+    }
+    return el
+   }
+   )
+   setPayment(newPay)
         if(pay.length === 0){
             setPay([n])
         }
@@ -36,9 +57,8 @@ export const PaymentSetings = () => {
               data: pay
               
             });
-           
-          // TODO: remove console.logs before deployment
-        
+          
+            name()
     
       }catch(error){
           console.log(error as Error);
@@ -50,7 +70,14 @@ export const PaymentSetings = () => {
         <div className='PaymentSetings'>
             <div className="Setings-payment">
                 <h1>Payment metod</h1>
-                <div>
+
+               {
+                payment?.map((el:any)=><div>
+                    <span>{el.title}</span>
+                    <input type="checkbox" checked={el.status}  onChange={()=>addPay(el.id)} />
+                </div>)
+               }
+                {/* <div>
                     <span>PayPal</span>
                     <input type="checkbox" onChange={()=>{addPay(1)}}/>
                 </div>
@@ -61,7 +88,7 @@ export const PaymentSetings = () => {
                 <div>
                     <span>Google Pay</span>
                     <input type="checkbox" onChange={()=>{addPay(3)}}/>
-                </div>
+                </div> */}
                
             </div>
             <div

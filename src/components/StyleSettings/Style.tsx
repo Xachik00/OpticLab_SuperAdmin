@@ -83,7 +83,7 @@ export  function Style() {
                 <>
                   <h3 id={"containerHeaderH11"}>{LoginStyle?.title}</h3>
                   <button id='buttonId' onClick={() => {setText(LoginStyle?.title);setEdit(true)}} style={{ color: color || LoginStyle?.login_color, background: colorbtn || LoginStyle?.buttonBg_color }}>
-                    edit
+                    Edit
                     
                     </button>
                 </>

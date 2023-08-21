@@ -3,7 +3,7 @@ import "./Modal.scss"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRef, useEffect } from "react";
-import useraxios from '../../axios/axios';
+import adminAxios from '../../axios/adminaxios';
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 
@@ -57,11 +57,11 @@ export default function Modal() {
        
         try {
             
-            const response = await  useraxios({
+            const response = await  adminAxios({
                 method: 'post',
-                url: 'add',
+                url: 'createAdmin',
                 data: {
-                  email: user,
+                  username: user,
                   password: pwd
                 }
               });
@@ -92,7 +92,7 @@ export default function Modal() {
                 <p className='p1'><h1>Registration on the site</h1></p>
                 <form onSubmit={handleSubmit} className='containform'>
                     <div className='inputs'>
-                        <p>Email</p>
+                        <p>UserName</p>
                       <input
                      type="text"
                      id="username"

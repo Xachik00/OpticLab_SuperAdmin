@@ -1,7 +1,8 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./ShippingSetings.scss"
 import adminaxios from "../../axios/adminaxios";
+import { useraxios } from "../../axios/axios";
 
 
 export const ShippingSetings = () => {
@@ -31,19 +32,69 @@ export const ShippingSetings = () => {
 
 
 
-  const [pay, setPay] = useState<any>([])
+  const [ship, setShip] = useState<any>([])
+  
+  const [shipment, setShipment] = useState<any>();
+  const [orderInfo, setOrderInfo] = useState<any>();
+  async function name() {
 
-  async function addPay(n: any) {
-    if (pay.length === 0) {
-      setPay([n])
+    try {
+      const response = await useraxios.get('shipMethods');
+      console.log(response);
+      setShipment(response.data)
     }
-    pay.map((el: any, index: any) => {
-      if (el === n) {
-        pay.splice(index, 1)
+    catch (error) {
+      console.log(error);
 
-        setPay(pay)
+    }
+
+
+  }
+  async function getOrderInfo() {
+
+    try {
+      const response = await adminaxios.get('getBoxparams');
+      console.log(response);
+      setOrderInfo(response.data)
+    }
+    catch (error) {
+      console.log(error);
+
+    }
+
+
+  }
+  console.log(orderInfo);
+  
+  useEffect(() => {
+    name()
+    getOrderInfo()
+  }, [])
+  // console.log(shipment);
+  
+
+  async function addShip(n: any) {
+      
+  
+  let newShip:any = shipment?.map((el:any)=>{
+    if(el.id === n ){
+      el={...el, status:!el.status}
+    }
+    return el
+   }
+   )
+   setShipment(newShip)
+    // console.log(x)
+    if (ship.length === 0) {
+      setShip([n])
+    }
+    ship.map((el: any, index: any) => {
+      if (el === n) {
+        ship.splice(index, 1)
+
+        setShip(ship)
       } else {
-        setPay([...pay, n])
+        setShip([...ship, n])
       }
     })
 
@@ -55,24 +106,35 @@ export const ShippingSetings = () => {
 
 
   async function save() {
+    console.log({
+      ids: ship,
+      weight: weight,
+      height: height,
+      length: lenght,
+      widht: widht,
+      distance_unit: unit,
+      mass_unit: mass
+    });
+    
     try {
-
       const response = await adminaxios({
         method: 'PUT',
         url: 'changeBoxParams',
         data: {
-          title: pay,
+          ids: ship,
           weight: weight,
           height: height,
           length: lenght,
           widht: widht,
-          distance_unit: unit.value,
-          mass_unit: mass.value
+          distance_unit: unit,
+          mass_unit: mass
         }
 
       });
 
       // TODO: remove console.logs before deployment
+      name()
+      getOrderInfo()
 
 
     } catch (error) {
@@ -87,64 +149,59 @@ export const ShippingSetings = () => {
       <div className="Setings-Sipping">
         <div className="ship">
           <h3>Shipp Order</h3>
-          <div>
-            <span>Fedex</span>
-            <input type="checkbox" onChange={() => { addPay("Ship in Fedex") }} />
-          </div>
-          <div>
-            <span>UPS</span>
-            <input type="checkbox" onChange={() => { addPay("Ship in UPS") }} />
-          </div>
-          <div>
-            <span>USPS</span>
-            <input type="checkbox" onChange={() => { addPay("Ship in USPS") }} />
-          </div>
+          {
+            shipment?.map((el: any) => <div>
+              <span>{el.title}</span>
+              <input type="checkbox" checked={el.status} onChange={() => addShip(el.id) } />
+             </div>)
+          }
+         
           <div className='button-sayt'>
-          <button onClick={() => { save() }}>Save Shipping metods</button>
+            <button onClick={() => { save() }}>Save Shipping metods</button>
 
           </div>
         </div>
 
         <div className="ordering">
           <h3>Ordering Info</h3>
-          <span>lenght</span>
+          <span>length {orderInfo?.length}</span>
           <input type="number"
             onChange={(e) => setLenght(e.target.value)}
             value={lenght}
           />
-          <span>widht</span>
+          <span>width {orderInfo?.width}</span>
           <input type="number"
             onChange={(e) => setWidht(e.target.value)}
             value={widht}
           />
-          <span>weight</span>
+          <span>weight {orderInfo?.weight}</span>
           <input type="number"
             onChange={(e) => setWeight(e.target.value)}
             value={weight}
           />
-          <span>height</span>
+          <span>height {orderInfo?.height}</span>
           <input type="number"
             onChange={(e) => setHeight(e.target.value)}
             value={height}
           />
-          <span>unit</span>
-          <select   onChange={(e) => {
-              setUnit(e.target.value)
-            }}>
-            {units.map((el:any)=> <option>{el.value}</option>)}
+          <span>unit {orderInfo?.distance_unit}</span>
+          <select onChange={(e) => {
+            setUnit(e.target.value)
+          }}>
+            {units.map((el: any) => <option>{el.value}</option>)}
           </select>
-            {/* options={units}
+          {/* options={units}
             value={unit}
            
           
           /> */}
-          <span>mass</span>
-          <select  onChange={(e) => {
-            
-            
-              setMass(e.target.value)
-            }} >
-            {masss.map((el:any)=> <option>{el.value}</option>)}
+          <span>mass {orderInfo?.mass_unit}</span>
+          <select onChange={(e) => {
+
+
+            setMass(e.target.value)
+          }} >
+            {masss.map((el: any) => <option>{el.value}</option>)}
           </select>
           {/* <Select
             options={masss}
@@ -153,12 +210,12 @@ export const ShippingSetings = () => {
               setMass(item)
             }}
           /> */}
-           <div className='button-sayt'>
-          <button onClick={() => { save() }}>Save Ordering Info</button>
+          <div className='button-sayt'>
+            <button onClick={() => { save() }}>Save Ordering Info</button>
 
           </div>
         </div>
-       
+
       </div>
     </div>
   )
