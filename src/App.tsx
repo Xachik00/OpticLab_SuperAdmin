@@ -16,16 +16,19 @@ function App() {
 
   const navigate = useNavigate();
   const location = window.location.href
-  const loc: string | any=localStorage.getItem( "auth" );
-  const local =JSON.parse( loc ); 
+  const loc: string | any=localStorage?.getItem( "auth" );
+  const local =JSON?.parse( loc ); 
   
-//   useEffect(()=>{
+  useEffect(()=>{
     
-//     if (local  == null && local?.role != "superAdmin" && local?.username!= "superAdmin" ) {
-//         navigate( "/login" )
-//     };  
+    if (local  === null && local?.role.endsWith("dmin")
+     && 
+     local?.username.endsWith("dmin")
+     ) {
+        navigate( "/login" )
+    };  
 
-// },[location])
+},[location])
 
 
 

@@ -11,16 +11,16 @@ export const PaymentSetings = () => {
     const [pay,setPay]=useState<any>([])
     const [payment,setPayment] = useState<Object[]>()
     async function name() {
-        console.log(111);
         
         const response = await useraxios.get('paymentMethods');
         setPayment(response.data)
+        console.log(payment);
+        
       }
       useEffect(()=>{
 
           name()
     },[])
-    console.log(payment);
     
    function addPay(n:any){
          
@@ -51,14 +51,16 @@ export const PaymentSetings = () => {
     async function save() {
         try{
         
-          const response = await  useraxios({
+           await  useraxios({
               method: 'PUT',
               url: 'paymentMethods',
               data: pay
               
             });
           
-            name()
+          
+           await name();
+           setPay([])
     
       }catch(error){
           console.log(error as Error);
@@ -74,7 +76,7 @@ export const PaymentSetings = () => {
                {
                 payment?.map((el:any)=><div>
                     <span>{el.title}</span>
-                    <input type="checkbox" checked={el.status}  onChange={()=>addPay(el.id)} />
+                    <input type="checkbox" checked={el.status}  onChange={()=>{addPay(el.id)}} />
                 </div>)
                }
                 {/* <div>

@@ -66,6 +66,7 @@ export default function Modal() {
                 }
               });
            
+              console.log(response);
             setSuccess(true);
             setUser('');
             setPwd('');

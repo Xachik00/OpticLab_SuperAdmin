@@ -106,18 +106,9 @@ export const ShippingSetings = () => {
 
 
   async function save() {
-    console.log({
-      ids: ship,
-      weight: weight,
-      height: height,
-      length: lenght,
-      widht: widht,
-      distance_unit: unit,
-      mass_unit: mass
-    });
-    
+
     try {
-      const response = await adminaxios({
+       await adminaxios({
         method: 'PUT',
         url: 'changeBoxParams',
         data: {
@@ -133,8 +124,14 @@ export const ShippingSetings = () => {
       });
 
       // TODO: remove console.logs before deployment
-      name()
-      getOrderInfo()
+     await name();
+     await getOrderInfo();
+      setShip("");
+      setWeight("");
+      setLenght("");
+      setWidht("");
+      setUnit("");
+      setMass("");
 
 
     } catch (error) {

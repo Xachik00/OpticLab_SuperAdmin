@@ -65,7 +65,7 @@ let local:string | any =JSON.parse(loc) ;
                     {(e) =>{ 
                         e.preventDefault();
                         handleSignOut();
-                    }}>{local&&local.role==="superAdmin"?<span>Sign Out</span>:<span onClick={()=>navigate('/login')}>Sign In</span>}</button>
+                    }}>{local&&local.role.endsWith("dmin")?<span>Sign Out</span>:<span onClick={()=>navigate('/login')}>Sign In</span>}</button>
                 </div>
             </div>
             </header>)

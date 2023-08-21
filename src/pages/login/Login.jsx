@@ -129,7 +129,7 @@ export const Login = () => {
     }
     await loginRequest();
 
-    if (check == 2 && auth().role === "superAdmin") {
+    if (check == 2 && auth()?.role.endsWith("dmin")) {
       navigate("/home")
     }
 
