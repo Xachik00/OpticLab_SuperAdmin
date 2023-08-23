@@ -24,7 +24,6 @@ export default function Modal({ active, setActive }) {
   const [preview, setPreview] = useState();
   const fileInputRef = useRef();
   const dispatch = useAppDispatch()
-  console.log(img);
   useEffect(() => {
     if (image) {
       const reader = new FileReader();
@@ -42,8 +41,7 @@ export default function Modal({ active, setActive }) {
     try {
       if (price === '' || price1 === '') {
         if (price === '' && price1 === '' && img !== "") {
-          console.log(depName);
-          console.log(item);
+        
                       
           const response = await axiosadmin({
             method: 'POST',

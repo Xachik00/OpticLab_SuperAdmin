@@ -85,7 +85,6 @@ export const Login = () => {
             username: checkLogin.login,
             password: password.password,
         });
-        console.log(user,'user');
         const lifetime = active
             ? (new Date).setDate((new Date()).getDate() + 356)
             : (new Date).setDate((new Date()).getDate() + 1)

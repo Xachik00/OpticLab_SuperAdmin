@@ -66,7 +66,6 @@ export default function Modal() {
                 }
               });
            
-              console.log(response);
             setSuccess(true);
             setUser('');
             setPwd('');
@@ -107,8 +106,6 @@ export default function Modal() {
                      onFocus={() => setUserFocus(true)}
                      onBlur={() => setUserFocus(false)}
                  />
-
-
                          <p>Password</p>
                      <input
                      type="password"

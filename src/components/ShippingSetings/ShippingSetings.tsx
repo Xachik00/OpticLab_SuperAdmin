@@ -40,7 +40,6 @@ export const ShippingSetings = () => {
 
     try {
       const response = await useraxios.get('shipMethods');
-      console.log(response);
       setShipment(response.data)
     }
     catch (error) {
@@ -54,7 +53,6 @@ export const ShippingSetings = () => {
 
     try {
       const response = await adminaxios.get('getBoxparams');
-      console.log(response);
       setOrderInfo(response.data)
     }
     catch (error) {
@@ -64,7 +62,6 @@ export const ShippingSetings = () => {
 
 
   }
-  console.log(orderInfo);
   
   useEffect(() => {
     name()

@@ -14,7 +14,6 @@ export const PaymentSetings = () => {
         
         const response = await useraxios.get('paymentMethods');
         setPayment(response.data)
-        console.log(payment);
         
       }
       useEffect(()=>{

@@ -161,7 +161,6 @@ const OrderingInformation = () => {
                 </div>
                 <form onSubmit={handleSubmit}>
                   {orders?.length>0 && orders?.map((item: any) => {
-                    console.log(item);
                     
                     if (item.table_name === el)
                       return (

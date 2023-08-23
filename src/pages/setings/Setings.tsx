@@ -31,7 +31,6 @@ export const Setings = () => {
         const seen:any=sessionStorage.getItem('seenArr')
         setSeenArr(JSON.parse(seen))
     
-        console.log(kov);
         
     },[kov])
 
